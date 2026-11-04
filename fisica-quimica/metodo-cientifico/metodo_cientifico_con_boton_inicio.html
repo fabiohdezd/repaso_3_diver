@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="Repasa Física y Química de 3.º de Diversificación: teoría, actividades autocorregibles, conversiones, errores y notación científica.">
+  <title>Laboratorio de repaso · Física y Química · 3.º Diversificación</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;--white:#fff;--ink:#18283c;--muted:#64748b;--stroke:#e3e9f0;
+      --teal:#128a82;--teal-dark:#096d67;--teal-soft:#e7f7f3;
+      --blue:#5369ad;--blue-soft:#eef1fd;--peach:#fff2e6;--orange:#b15f25;
+      --red:#ac4150;--red-soft:#fff0f2;--green:#13794b;--green-soft:#e9f8f0;
+      --radius:20px;--shadow:0 18px 55px rgba(29,49,75,.06);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:35px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.65}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    button:disabled{cursor:not-allowed;opacity:.6}
+    a{text-decoration:none;color:inherit}
+    strong{font-weight:750}
+    .shell{max-width:1480px;margin:auto;min-height:100vh;display:grid;grid-template-columns:278px minmax(0,1fr)}
+    .sidebar{padding:31px 18px 24px 26px;background:#fff;border-right:1px solid var(--stroke);position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column;z-index:5}
+    .brand{display:flex;align-items:center;gap:12px;padding:2px 8px 28px}
+    .brand-mark{height:46px;width:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:14px;background:var(--ink);color:#fff;font-weight:900;letter-spacing:-1px;font-size:16px}
+    .brand-name{font-size:15px;font-weight:850;line-height:1.15;letter-spacing:-.35px}
+    .brand-sub{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.2px;margin-top:5px}
+    .side-label{padding:7px 14px;font-size:10px;color:#8291a2;font-weight:850;text-transform:uppercase;letter-spacing:1.6px}
+    .nav{display:flex;flex-direction:column;gap:5px}
+    .nav button{display:flex;gap:12px;align-items:center;text-align:left;padding:11px 12px;width:100%;border:1px solid transparent;background:transparent;border-radius:12px;color:#66778a;font-size:13px;line-height:1.3;min-height:44px}
+    .nav button:hover{background:#f5f8fb;color:var(--ink)}
+    .nav button.active{color:var(--teal-dark);background:var(--teal-soft);font-weight:770}
+    .nav-index{height:27px;width:27px;border:1px solid #e6ebf1;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:11px;font-weight:780;background:white;color:#7e8b99}
+    .nav button.active .nav-index{background:#fff;border-color:#c5e6df;color:var(--teal-dark)}
+    .nav-check{margin-left:auto;font-weight:900;color:var(--green)}
+    .side-bottom{margin-top:auto;padding:25px 6px 0}
+    .side-progress{border-radius:17px;background:#f5f8fc;padding:16px}
+    .tiny-line{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;font-weight:700}
+    .track{height:8px;width:100%;border-radius:20px;background:#e2e9ed;overflow:hidden;margin:11px 0}
+    .track span{height:100%;display:block;background:var(--teal);width:0%;border-radius:20px;transition:width .35s}
+    .side-note{font-size:11px;color:var(--muted);line-height:1.55}
+    .main{min-width:0;padding:30px clamp(20px,4.5vw,74px) 74px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+    .eyebrow{font-size:11px;letter-spacing:1.4px;font-weight:850;text-transform:uppercase;color:var(--teal-dark)}
+    .top-right{display:flex;gap:9px;align-items:center;font-size:12px;color:var(--muted)}
+    .top-dot{display:inline-block;height:8px;width:8px;background:#36a789;border-radius:100%}
+    .hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(125deg,#172b41 0%,#253d55 75%,#1b5d62 140%);color:white;padding:clamp(27px,4.8vw,57px);margin-bottom:33px;display:grid;grid-template-columns:1fr minmax(180px,33%);gap:12px;min-height:340px;align-items:center}
+    .hero::before,.hero::after{content:"";position:absolute;border:1px solid rgba(255,255,255,.09);border-radius:50%;height:370px;width:370px;right:-145px;top:-180px}
+    .hero::after{height:290px;width:290px;right:5%;top:65%;border-color:rgba(255,255,255,.05)}
+    .hero-copy{position:relative;z-index:1}
+    .hero-kicker{display:inline-flex;align-items:center;gap:8px;color:#b2e5df;background:rgba(19,175,151,.16);border:1px solid rgba(155,245,219,.13);border-radius:99px;padding:5px 13px;font-size:11px;font-weight:850;letter-spacing:.3px}
+    h1{font-size:clamp(29px,4.1vw,49px);letter-spacing:-1.7px;line-height:1.13;margin:21px 0 14px;font-weight:850}
+    .hero p{max-width:550px;color:#d8e2eb;line-height:1.75;margin:0 0 24px;font-size:14px}
+    .hero-art{position:relative;height:250px;display:grid;place-items:center}
+    .orb{width:185px;height:185px;border:1px solid rgba(190,231,224,.45);border-radius:50%;display:grid;place-items:center;position:relative;transform:rotate(-23deg)}
+    .orb:before{content:"";position:absolute;inset:27px -22px;border:1px solid rgba(169,210,206,.45);border-radius:50%;transform:rotate(68deg)}
+    .orb:after{content:"";position:absolute;inset:-20px 40px;border:1px solid rgba(169,210,206,.26);border-radius:50%;transform:rotate(65deg)}
+    .orb-core{height:73px;width:73px;background:rgba(43,180,158,.15);border:1px solid rgba(166,252,232,.2);display:grid;place-items:center;border-radius:50%;font-size:37px;transform:rotate(23deg);color:#b6eee5}
+    .float-label{position:absolute;background:#fff;color:#30465b;padding:9px 13px;border-radius:11px;box-shadow:0 15px 30px rgba(1,10,21,.18);font-size:11px;font-weight:850}
+    .float-label.one{right:7%;top:10%;transform:rotate(8deg)}.float-label.two{left:0%;bottom:8%;transform:rotate(-6deg)}
+    .btn{border:1px solid transparent;border-radius:11px;padding:10px 16px;min-height:42px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:780;transition:transform .15s,background .15s,border-color .15s}
+    .btn:hover:not(:disabled){transform:translateY(-1px)}
+    .btn.primary{background:var(--teal);color:white}.btn.primary:hover{background:var(--teal-dark)}
+    .btn.light{background:white;color:var(--ink)}.btn.ghost{background:white;border-color:var(--stroke);color:#42556d}.btn.ghost:hover{border-color:#b1d2ce;background:#fbfefd}
+    .btn.secondary{background:var(--teal-soft);color:var(--teal-dark)}
+    .btn.small{font-size:12px;padding:7px 12px;min-height:34px}
+    .btn.bad{background:var(--red-soft);color:var(--red)}
+    .section-head{margin-bottom:19px;display:flex;justify-content:space-between;gap:16px;align-items:end}
+    h2{font-size:clamp(23px,3vw,31px);line-height:1.25;letter-spacing:-.8px;margin:6px 0 8px}
+    h3{font-size:18px;letter-spacing:-.35px;line-height:1.3;margin:0 0 9px}
+    h4{font-size:14px;margin:0 0 5px}
+    .muted{color:var(--muted)}.small{font-size:12px}.mini{font-size:11px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:25px}
+    .card{background:#fff;border:1px solid var(--stroke);box-shadow:0 4px 12px rgba(15,35,55,.012);border-radius:var(--radius);padding:22px;min-width:0}
+    .topic-card{transition:transform .15s,border-color .15s;display:flex;flex-direction:column;gap:10px;cursor:pointer;position:relative}
+    .topic-card:hover{transform:translateY(-3px);border-color:#beddd8}
+    .topic-icon{height:42px;width:42px;display:grid;place-items:center;background:var(--teal-soft);color:var(--teal-dark);border-radius:12px;font-size:18px;font-weight:850}
+    .topic-icon.lilac{background:var(--blue-soft);color:var(--blue)}.topic-icon.peach{background:var(--peach);color:var(--orange)}
+    .card-index{font-size:10px;color:#8393a3;letter-spacing:1px;font-weight:780;text-transform:uppercase}
+    .topic-card h3{font-size:16px;line-height:1.4;margin:0}
+    .topic-card p{color:var(--muted);font-size:12px;margin:0;flex:1}
+    .card-foot{font-size:11px;color:var(--teal-dark);font-weight:800;display:flex;justify-content:space-between;margin-top:8px}
+    .overview{display:grid;grid-template-columns:1.4fr 1fr;gap:15px;margin-bottom:32px}
+    .overview .card{padding:24px}
+    .soft-list{list-style:none;padding:0;margin:13px 0 0}.soft-list li{margin:11px 0;padding-left:23px;position:relative;font-size:13px;color:#506077}
+    .soft-list li:before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:900}
+    .pathway{display:flex;gap:9px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .step-dot{height:29px;width:29px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;font-size:12px;font-weight:850}
+    .step-line{height:1px;width:18px;background:#d7e6e3}
+    .panel{display:none;animation:fade .2s ease-out}.panel.active{display:block}
+    @keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .chapter-intro{display:flex;align-items:center;gap:14px;margin-bottom:23px}
+    .chapter-number{height:56px;width:56px;display:grid;place-items:center;border-radius:16px;background:var(--teal-soft);color:var(--teal-dark);font-size:23px;font-weight:850;flex:0 0 56px}
+    .chapter-intro h2{margin:2px 0 3px}.chapter-intro p{margin:0;color:var(--muted);font-size:13px}
+    .lesson-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:17px}
+    .lesson-block{background:#fff;border:1px solid var(--stroke);border-radius:21px;padding:clamp(20px,3.2vw,30px)}
+    .lesson-block>p{color:#55667b;margin:8px 0 14px}
+    .block-tag{display:inline-flex;gap:7px;align-items:center;color:var(--teal-dark);font-size:10px;font-weight:850;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:10px}
+    .callout{padding:16px 18px;border-radius:14px;background:var(--teal-soft);color:#205851;font-size:13px;margin:16px 0}
+    .callout.warning{background:var(--peach);color:#7d4b21}
+    .callout.cool{background:var(--blue-soft);color:#445280}
+    .formula{font-size:18px;font-weight:800;color:var(--ink);background:#f4f7fb;border:1px solid #e9edf3;padding:15px 18px;display:inline-block;border-radius:12px;letter-spacing:.1px;margin:6px 0}
+    .formula span{color:var(--teal-dark)}
+    .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+    .tile{background:#f8fafc;border:1px solid #edf1f6;padding:17px;border-radius:15px;min-width:0}
+    .tile p{font-size:12px;color:var(--muted);margin:6px 0 0}.tile h4{font-size:14px}
+    .steps{display:grid;gap:10px;margin:20px 0 0}
+    .science-step{display:flex;gap:16px;padding:15px 16px;border-radius:14px;background:#f7f9fc;border:1px solid #edf1f6}
+    .science-step-num{height:31px;width:31px;border-radius:10px;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;flex:0 0 31px;font-size:12px;font-weight:850}
+    .science-step p{font-size:12px;color:#627086;margin:2px 0 0}
+    .exercise{border:1px solid #dce8e5;background:#fff;border-radius:21px;overflow:hidden}
+    .exercise-top{display:flex;align-items:center;gap:12px;background:#f0f9f6;padding:16px 22px;border-bottom:1px solid #e1efea}
+    .exercise-badge{background:#d7ede7;color:var(--teal-dark);padding:4px 9px;border-radius:8px;font-size:10px;font-weight:800;letter-spacing:.4px;white-space:nowrap}
+    .exercise-top h3{font-size:15px;margin:0}.exercise-body{padding:24px}
+    .q-list{display:grid;gap:12px}
+    .q-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,240px);gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #eff2f5}
+    .q-row:last-child{border-bottom:0}
+    .q-row label{font-size:13px;font-weight:650}
+    .field{height:43px;border:1px solid #d8e1e9;border-radius:11px;padding:10px 12px;width:100%;min-width:0;background:#fff;color:var(--ink);outline:none}
+    .field:focus-visible{border-color:var(--teal);box-shadow:0 0 0 3px rgba(18,138,130,.12)}
+    select.field{cursor:pointer}
+    .answer-box{margin-top:17px;padding:13px 15px;border-radius:12px;font-size:13px;display:none;line-height:1.7}
+    .answer-box.show{display:block}
+    .answer-box.ok{background:var(--green-soft);color:#176b47}.answer-box.no{background:var(--red-soft);color:#974051}.answer-box.info{background:var(--blue-soft);color:#394d80}
+    .actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}
+    .choice{border:1px solid #dce5ed;background:#fff;border-radius:12px;padding:12px 14px;text-align:left;color:#334962;font-size:13px;line-height:1.4;transition:border-color .1s,background .1s}
+    .choice:hover{border-color:#95c9c3}
+    .choice.selected{border-color:var(--teal);background:var(--teal-soft);color:var(--teal-dark);font-weight:750}
+    .choice.correct{border-color:#70bd91;background:#edf9f1}.choice.wrong{border-color:#e5a0aa;background:#fff0f2}
+    .classification{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .class-item{display:flex;align-items:center;justify-content:space-between;gap:9px;background:#f8fafc;border:1px solid #ebf0f5;border-radius:12px;padding:10px 13px;font-size:13px;font-weight:690}
+    .class-item select{max-width:150px;width:140px;font-size:12px;padding:8px;border-radius:9px;border:1px solid #d9e3ea;background:#fff;color:var(--ink)}
+    .order-list{display:grid;gap:8px;margin:15px 0}
+    .order-item{display:flex;align-items:center;gap:10px;border:1px solid #e3e9ee;background:#fafbfd;border-radius:12px;padding:10px}
+    .order-position{font-size:11px;color:var(--muted);width:21px;text-align:center;font-weight:800}
+    .order-name{flex:1;font-size:13px;font-weight:750}
+    .move-group{display:flex;gap:5px}
+    .move-group button{display:grid;place-items:center;background:#fff;border:1px solid #dde6ee;color:#44556a;height:31px;width:31px;border-radius:8px;font-size:17px}
+    .move-group button:hover{border-color:var(--teal);color:var(--teal-dark)}
+    .table-wrap{overflow-x:auto;border:1px solid #e5eaf0;border-radius:13px;margin:14px 0}
+    table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}
+    th{background:#f5f8fb;color:#54667d;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+    th,td{padding:11px 13px;border-bottom:1px solid #edf0f4;white-space:nowrap}
+    tr:last-child td{border-bottom:0}
+    td:first-child{font-weight:700}
+    .example{background:#fafbfd;border:1px solid #e8edf3;border-radius:15px;padding:18px 20px;margin:14px 0}
+    .example-title{font-size:12px;font-weight:850;color:var(--teal-dark);letter-spacing:.3px}
+    .example p{font-size:13px;color:#526279;margin:7px 0 0}
+    .highlight{background:#fff4d5;border-radius:5px;padding:2px 5px;color:#815923;font-weight:740}
+    .numeric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:15px 0}
+    .numeric-grid label{font-size:11px;font-weight:760;color:#53647a;display:block}
+    .numeric-grid .field{margin-top:5px;font-size:13px}
+    .mini-hint{font-size:12px;color:var(--muted);margin-top:9px}
+    details.hint{margin-top:15px;border:1px solid #e9edf3;border-radius:12px;padding:10px 14px;background:#fafbfd;font-size:12px;color:#5d6a7e}
+    details.hint summary{color:#415774;font-weight:750;cursor:pointer}
+    details.hint p{margin:9px 0 2px}
+    .targets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0}
+    .target-card{background:#fafbfd;border:1px solid #e8eef2;border-radius:14px;padding:16px}
+    .target-title{font-size:12px;font-weight:800;margin-bottom:10px}
+    .target{position:relative;margin:auto;width:112px;height:112px;border-radius:50%;border:1px solid #b6cde2;background:repeating-radial-gradient(circle,#fff 0 17px,#eaf1f8 18px 19px,#fff 20px 36px);}
+    .target:before{content:"";position:absolute;width:8px;height:8px;top:52px;left:52px;border-radius:50%;background:#e7a048}
+    .target i{position:absolute;display:block;height:6px;width:6px;background:#5369ad;border-radius:50%}
+    .target-card p{font-size:12px;color:var(--muted);margin:10px 0 0;text-align:center}
+    .input-set{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .input-set .field{max-width:170px}
+    .operation{display:flex;flex-wrap:wrap;align-items:center;gap:9px;font-size:13px;font-weight:700;margin:13px 0}
+    .operation .field{max-width:142px}
+    .result-emphasis{font-size:22px;font-weight:850;letter-spacing:-.5px;color:var(--teal-dark)}
+    .range-meter{height:34px;background:linear-gradient(90deg,#e9f2fa,#d6e8ec);border-radius:10px;position:relative;margin:20px 0 9px;display:flex;justify-content:space-between;padding:7px 12px;color:#53677b;font-size:11px}
+    .range-meter .range-value{position:absolute;left:50%;transform:translateX(-50%);top:-13px;background:#fff;border:1px solid #c7dfd7;border-radius:9px;padding:1px 8px;font-size:11px;color:var(--teal-dark);font-weight:800}
+    .sim-readout{background:#f7fafc;border:1px solid #edf1f4;border-radius:13px;padding:14px;margin-top:13px;font-size:13px;line-height:1.9}
+    .result-table td:first-child{font-weight:500}
+    .footer-nav{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--stroke)}
+    .footer-nav .btn{max-width:48%}
+    .quiz-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+    .pill{font-size:11px;font-weight:780;border-radius:99px;padding:6px 12px;background:#f1f5fa;color:#496079}
+    .pill.green{background:var(--green-soft);color:var(--green)}
+    .quiz-question{padding:21px;border:1px solid var(--stroke);border-radius:17px;margin:14px 0;background:#fff}
+    .quiz-question h3{font-size:14px;margin:5px 0 13px;line-height:1.5}
+    .quiz-question .choice-grid{margin:0}
+    .quiz-idx{color:var(--teal-dark);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.5px}
+    .quiz-reason{margin-top:13px;font-size:12px;border-radius:10px;padding:11px 13px}
+    .quiz-result{background:linear-gradient(135deg,#e6f7f1,#f4f8fc);border:1px solid #d8eee7;border-radius:20px;padding:24px;display:none;margin:21px 0}
+    .quiz-result.show{display:block}.quiz-result h3{font-size:22px}
+    .quiz-number{font-size:45px;letter-spacing:-2px;color:var(--teal-dark);line-height:1.2;font-weight:900}
+    .toast{position:fixed;bottom:24px;right:24px;padding:12px 17px;background:var(--ink);color:#fff;border-radius:13px;box-shadow:0 10px 28px #1b2a3a35;font-size:13px;font-weight:650;z-index:100;opacity:0;transform:translateY(10px);pointer-events:none;transition:all .2s;max-width:min(340px,90vw)}
+    .toast.show{opacity:1;transform:none}
+    .mobile-bar{display:none}
+    .footer{margin-top:55px;border-top:1px solid var(--stroke);padding:20px 0;font-size:11px;color:var(--muted)}
+    .skip{position:absolute;top:-80px;left:20px;background:#fff;padding:10px 16px;z-index:200;border:2px solid var(--teal)}.skip:focus{top:10px}
+    :focus-visible{outline:3px solid #68b9ab;outline-offset:3px}
+    @media(max-width:1120px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{grid-template-columns:242px minmax(0,1fr)}.main{padding-left:35px;padding-right:35px}.sidebar{padding-left:17px}}
+    @media(max-width:800px){
+      .shell{display:block}.sidebar{position:fixed;top:0;bottom:0;left:0;width:min(310px,85vw);height:100dvh;transform:translateX(-102%);transition:transform .2s;box-shadow:25px 0 65px rgba(16,31,45,.15)}
+      .sidebar.open{transform:translateX(0)}.mobile-bar{position:sticky;z-index:10;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center;padding:11px 20px;backdrop-filter:blur(12px)}
+      .mobile-bar strong{font-size:13px}.menu-btn{border:1px solid var(--stroke);border-radius:10px;background:#fff;padding:7px 12px;color:var(--ink);font-size:13px}
+      .main{padding:20px 20px 50px}.hero{margin-top:8px}.topbar{margin-bottom:19px}
+      .hero-art{height:220px}.hero{grid-template-columns:1fr 180px}
+    }
+    @media(max-width:610px){
+      .hero{display:block;min-height:0;padding:27px}.hero-art{display:none}.hero h1{font-size:34px}
+      .cards{grid-template-columns:1fr}.overview{grid-template-columns:1fr}.two-col,.three-col,.targets,.classification{grid-template-columns:1fr}
+      .lesson-block{padding:19px}.q-row{grid-template-columns:1fr;gap:7px}.q-row .field{max-width:none}
+      .numeric-grid{grid-template-columns:1fr 1fr}.choice-grid{grid-template-columns:1fr}
+      .chapter-intro{align-items:flex-start}.section-head{align-items:flex-start}
+      .top-right{font-size:11px}
+      .quiz-question{padding:16px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+    /* Enlace a la portada general de 3.º de Diversificación */
+    .aula-back{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 13px;border:1px solid #b9dcd5;background:#e7f7f3;color:#096d67;border-radius:11px;font-size:12px;font-weight:800;white-space:nowrap;text-decoration:none}
+    .aula-back:hover{background:#d5f0e9;border-color:#82c8bb}
+    .top-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    @media(max-width:610px){.topbar{align-items:flex-start;flex-wrap:wrap}.top-actions{justify-content:flex-start}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="mobile-bar">
+    <strong>◈ Laboratorio de repaso</strong>
+    <button type="button" class="menu-btn" id="menu-toggle" aria-controls="sidebar" aria-expanded="false">☰ Temas</button>
+  </div>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación de temas">
+      <div class="brand"><div class="brand-mark">FQ</div><div><div class="brand-name">LABORATORIO<br>DE REPASO</div><div class="brand-sub">Física y Química · 3.º Diver</div></div></div>
+      <div class="side-label">Empezamos aquí</div>
+      <nav class="nav" id="nav-main">
+        <button type="button" class="active" data-go="inicio"><span class="nav-index">⌂</span><span>Inicio</span></button>
+      </nav>
+      <div class="side-label" style="margin-top:15px">Aprende y practica</div>
+      <nav class="nav" id="nav-lessons">
+        <button type="button" data-go="metodo"><span class="nav-index">01</span><span>El método científico</span><span class="nav-check" data-check="metodo"></span></button>
+        <button type="button" data-go="magnitudes"><span class="nav-index">02</span><span>Magnitudes y unidades</span><span class="nav-check" data-check="magnitudes"></span></button>
+        <button type="button" data-go="aparatos"><span class="nav-index">03</span><span>Cómo medimos</span><span class="nav-check" data-check="aparatos"></span></button>
+        <button type="button" data-go="errores"><span class="nav-index">04</span><span>Errores de medida</span><span class="nav-check" data-check="errores"></span></button>
+        <button type="button" data-go="si"><span class="nav-index">05</span><span>Unidades del SI</span><span class="nav-check" data-check="si"></span></button>
+        <button type="button" data-go="conversion"><span class="nav-index">06</span><span>Conversiones</span><span class="nav-check" data-check="conversion"></span></button>
+        <button type="button" data-go="cientifica"><span class="nav-index">07</span><span>Notación científica</span><span class="nav-check" data-check="cientifica"></span></button>
+      </nav>
+      <div class="side-label" style="margin-top:15px">Ponte a prueba</div>
+      <nav class="nav"><button type="button" data-go="desafio"><span class="nav-index">★</span><span>Desafío final</span></button></nav>
+      <div class="side-bottom"><div class="side-progress"><div class="tiny-line"><span>Tu avance</span><span id="side-progress-count">0/7</span></div><div class="track" role="progressbar" aria-label="Progreso de módulos" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="side-track"><span id="side-bar"></span></div><div class="side-note">Se guarda en este navegador. Sin cuentas ni registros.</div></div></div>
+    </aside>
+    <main class="main" id="contenido">
+      <div class="topbar"><span class="eyebrow">Unidad 2 · Actividad científica y matemática</span><div class="top-actions"><span class="top-right"><span class="top-dot"></span>Repaso a tu ritmo</span><a class="aula-back" href="../../" aria-label="Volver al Aula de Repaso de 3.º de Diversificación">🏠 Volver al Aula de Repaso ↗</a></div></div>
+      <section class="panel active" id="panel-inicio" data-panel="inicio">
+        <div class="hero"><div class="hero-copy"><span class="hero-kicker">✦ Tu espacio para entender la ciencia</span><h1>La ciencia se aprende<br>haciendo.</h1><p>Teoría en palabras sencillas, ejercicios que se corrigen solos y retos para llegar al examen con confianza.</p><button type="button" class="btn light" data-go="metodo">Empezar a repasar <span aria-hidden="true">→</span></button></div><div class="hero-art" aria-hidden="true"><div class="orb"><div class="orb-core">⚛</div></div><span class="float-label one">10³ = 1000</span><span class="float-label two">✓ ¡Bien hecho!</span></div></div>
+        <div class="section-head"><div><span class="eyebrow">Tu recorrido</span><h2>Siete temas. Un objetivo.</h2><p class="muted small" style="margin:0">Elige por dónde empezar. Puedes repetir todos los ejercicios.</p></div><span class="pill green" id="home-completed">0 de 7 completados</span></div>
+        <div class="cards" id="topic-cards">
+          <article class="card topic-card" data-go="metodo" role="button" tabindex="0"><div class="topic-icon">01</div><span class="card-index">Tema 01</span><h3>El método científico</h3><p>Las cinco etapas para investigar y resolver preguntas.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="metodo"></span></div></article>
+          <article class="card topic-card" data-go="magnitudes" role="button" tabindex="0"><div class="topic-icon lilac">02</div><span class="card-index">Tema 02</span><h3>Magnitudes y unidades</h3><p>Aprende qué se mide y cómo se expresa una medida.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="magnitudes"></span></div></article>
+          <article class="card topic-card" data-go="aparatos" role="button" tabindex="0"><div class="topic-icon peach">03</div><span class="card-index">Tema 03</span><h3>Cómo medimos</h3><p>Medida directa e indirecta, precisión y exactitud.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="aparatos"></span></div></article>
+          <article class="card topic-card" data-go="errores" role="button" tabindex="0"><div class="topic-icon">04</div><span class="card-index">Tema 04</span><h3>Errores de medida</h3><p>Calcula errores absolutos, relativos y porcentajes.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="errores"></span></div></article>
+          <article class="card topic-card" data-go="si" role="button" tabindex="0"><div class="topic-icon lilac">05</div><span class="card-index">Tema 05</span><h3>Unidades del SI</h3><p>Las siete magnitudes fundamentales y las derivadas.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="si"></span></div></article>
+          <article class="card topic-card" data-go="conversion" role="button" tabindex="0"><div class="topic-icon peach">06</div><span class="card-index">Tema 06</span><h3>Conversiones</h3><p>De kilómetros a metros, de gramos a kilos y más.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="conversion"></span></div></article>
+          <article class="card topic-card" data-go="cientifica" role="button" tabindex="0"><div class="topic-icon">07</div><span class="card-index">Tema 07</span><h3>Notación científica</h3><p>Expresa números muy grandes o pequeños con potencias.</p><div class="card-foot"><span>Entrar al tema →</span><span data-card-check="cientifica"></span></div></article>
+          <article class="card topic-card" data-go="desafio" role="button" tabindex="0" style="border-color:#b9dad2;background:#f3faf7"><div class="topic-icon" style="background:#d9f2e9">★</div><span class="card-index">Reto final</span><h3>¿Preparado para el desafío?</h3><p>15 preguntas de todo el tema. Corrige y vuelve a intentarlo.</p><div class="card-foot"><span>Ir al desafío →</span><span id="best-mini"></span></div></article>
+        </div>
+        <div class="overview"><div class="card"><h3>¿Cómo se utiliza?</h3><ul class="soft-list"><li>Lee la explicación y fíjate en los ejemplos.</li><li>Haz los ejercicios: recibirás corrección y pistas.</li><li>Cuando completes una práctica, aparecerá una marca de progreso.</li><li>Termina con el desafío final para comprobar lo aprendido.</li></ul></div><div class="card"><span class="eyebrow">Un consejo</span><h3 style="margin-top:10px">Es mejor entender que memorizar.</h3><p class="muted small">Si te equivocas, mira la explicación, repítelo y prueba un ejemplo parecido. La ciencia también consiste en corregir errores.</p><div class="pathway"><span class="step-dot">1</span><span class="step-line"></span><span class="step-dot">2</span><span class="step-line"></span><span class="step-dot">3</span><span class="muted small">Leer · Practicar · Mejorar</span></div></div></div>
+      </section>
+
+      <section class="panel" id="panel-metodo" data-panel="metodo">
+        <div class="chapter-intro"><div class="chapter-number">01</div><div><span class="eyebrow">Investigamos</span><h2>El método científico</h2><p>Cómo pasamos de una pregunta a una explicación basada en pruebas.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>¿Qué es el método científico?</h3><p>Es una forma organizada de estudiar lo que ocurre a nuestro alrededor. No se trata de adivinar: consiste en <strong>observar, proponer explicaciones y comprobarlas</strong> con datos.</p><div class="steps"><div class="science-step"><span class="science-step-num">1</span><div><strong>Observación</strong><p>Detectamos algo que nos llama la atención y hacemos preguntas.</p></div></div><div class="science-step"><span class="science-step-num">2</span><div><strong>Hipótesis</strong><p>Proponemos una explicación que se pueda poner a prueba.</p></div></div><div class="science-step"><span class="science-step-num">3</span><div><strong>Experimentación</strong><p>Preparamos pruebas, controlamos variables, repetimos y recogemos datos.</p></div></div><div class="science-step"><span class="science-step-num">4</span><div><strong>Análisis y conclusiones</strong><p>Estudiamos los resultados y comprobamos si apoyan la hipótesis.</p></div></div><div class="science-step"><span class="science-step-num">5</span><div><strong>Comunicación de resultados</strong><p>Compartimos el método y las conclusiones para que otras personas puedan revisarlos.</p></div></div></div><div class="callout">Una hipótesis <strong>puede resultar falsa</strong>. ¡Eso también ayuda a aprender! Una conclusión debe basarse en las pruebas, no en nuestras preferencias.</div></article>
+          <article class="lesson-block"><span class="block-tag">◈ Ejemplo cotidiano</span><h3>¿El azúcar se disuelve antes en agua caliente?</h3><div class="two-col"><div class="tile"><h4>Pregunta e hipótesis</h4><p>«Creo que en agua caliente tardará menos en disolverse».</p></div><div class="tile"><h4>Experimento</h4><p>Dos vasos con la misma cantidad de agua y azúcar, pero a diferente temperatura. Cronometramos y repetimos.</p></div><div class="tile"><h4>Variables</h4><p>Cambiamos la temperatura. Medimos el tiempo. Mantenemos constantes las demás condiciones.</p></div><div class="tile"><h4>Conclusión</h4><p>Comparamos los tiempos observados, sin inventar resultados.</p></div></div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 01</span><h3>Ordena los pasos del método</h3></div><div class="exercise-body"><p class="muted small">Usa las flechas para colocar las fases en el orden correcto.</p><div class="order-list" id="method-order"></div><div class="actions"><button type="button" class="btn primary" id="check-method">Comprobar orden</button><button type="button" class="btn ghost" id="reset-method">Mezclar de nuevo</button></div><div class="answer-box" id="result-method" role="status" aria-live="polite"></div></div></div>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">RETO EXTRA</span><h3>¿Qué fase es?</h3></div><div class="exercise-body"><div class="q-list" id="method-cases"></div><div class="actions"><button type="button" class="btn secondary" id="check-method-cases">Corregir ejemplos</button></div><div class="answer-box" id="result-method-cases" role="status" aria-live="polite"></div></div></div>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="inicio" type="button">← Volver al inicio</button><button class="btn primary" data-go="magnitudes" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-magnitudes" data-panel="magnitudes">
+        <div class="chapter-intro"><div class="chapter-number">02</div><div><span class="eyebrow">Entendemos las medidas</span><h2>Magnitudes físicas y unidades</h2><p>Todo resultado de una medida tiene un número y una unidad.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>¿Qué podemos medir?</h3><p>Una <strong>magnitud física</strong> es una propiedad que se puede medir objetivamente, como la longitud, la masa, el tiempo o la temperatura. La alegría o la simpatía no son magnitudes físicas.</p><div class="two-col"><div class="tile"><h4>Medir</h4><p>Comparar una magnitud con una cantidad de referencia.</p></div><div class="tile"><h4>Unidad</h4><p>La referencia que usamos: metro (m), segundo (s), kilogramo (kg)…</p></div></div><div class="example"><span class="example-title">EJEMPLO: «HE COMPRADO 3 kg DE MANDARINAS»</span><p><strong>Magnitud:</strong> masa · <strong>Valor:</strong> 3 · <strong>Unidad:</strong> kg.</p></div><div class="callout">No confundas <strong>magnitud</strong> con <strong>unidad</strong>: la longitud es una magnitud; el metro es una unidad para medirla.</div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 02</span><h3>¿Es una magnitud física?</h3></div><div class="exercise-body"><p class="muted small">Decide si estas propiedades se pueden medir objetivamente.</p><div class="classification" id="magnitude-classes"></div><div class="actions"><button type="button" class="btn primary" id="check-magnitudes">Comprobar respuestas</button></div><div class="answer-box" id="result-magnitudes" role="status" aria-live="polite"></div></div></div>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">RETO EXTRA</span><h3>Identifica la medida</h3></div><div class="exercise-body"><p class="muted small">«El termómetro marca 20 °C». Completa las tres partes.</p><div class="q-list"><div class="q-row"><label for="magnitud-type">Magnitud física</label><select id="magnitud-type" class="field"><option value="">Elige una opción</option><option value="temperatura">Temperatura</option><option value="tiempo">Tiempo</option><option value="longitud">Longitud</option></select></div><div class="q-row"><label for="magnitud-value">Valor numérico</label><input class="field" id="magnitud-value" inputmode="decimal" placeholder="Ej.: 12"></div><div class="q-row"><label for="magnitud-unit">Unidad</label><select id="magnitud-unit" class="field"><option value="">Elige una opción</option><option value="kg">kg</option><option value="°C">°C</option><option value="m">m</option></select></div></div><div class="actions"><button class="btn secondary" type="button" id="check-magnitude-triplet">Comprobar</button></div><div class="answer-box" role="status" aria-live="polite" id="result-magnitude-triplet"></div></div></div>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="metodo" type="button">← Tema anterior</button><button class="btn primary" data-go="aparatos" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-aparatos" data-panel="aparatos">
+        <div class="chapter-intro"><div class="chapter-number">03</div><div><span class="eyebrow">Medimos mejor</span><h2>Tipos de medida e instrumentos</h2><p>No es lo mismo medir directamente que calcular una medida.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><div class="two-col"><div class="tile"><h4>Medida directa</h4><p>Se lee directamente con un instrumento. Ej.: longitud de un lápiz con una regla.</p></div><div class="tile"><h4>Medida indirecta</h4><p>Se calcula a partir de otras medidas. Ej.: superficie = largo × ancho.</p></div></div><h3 style="margin-top:24px">Tres palabras muy importantes</h3><div class="three-col"><div class="tile"><h4>Precisión</h4><p>Si repetimos una medida, ¿obtenemos resultados muy parecidos?</p></div><div class="tile"><h4>Exactitud</h4><p>¿Está el resultado cerca del valor verdadero o de referencia?</p></div><div class="tile"><h4>Sensibilidad</h4><p>¿Puede el instrumento detectar cambios pequeños de la magnitud?</p></div></div><div class="callout warning">Un instrumento puede ser <strong>preciso, pero poco exacto</strong>. Y mostrar más decimales no garantiza que mida correctamente.</div></article>
+          <article class="lesson-block"><span class="block-tag">◈ Visualiza la diferencia</span><h3>Dos maneras de medir</h3><p>El centro de cada diana es el valor correcto; los puntos azules representan medidas.</p><div class="targets"><div class="target-card"><div class="target-title">A · Resultados agrupados, pero alejados</div><div class="target" aria-label="Cinco medidas agrupadas lejos del centro"><i style="top:28px;left:73px"></i><i style="top:31px;left:78px"></i><i style="top:35px;left:70px"></i><i style="top:26px;left:78px"></i><i style="top:34px;left:82px"></i></div><p><strong>Alta precisión</strong>, menor exactitud.</p></div><div class="target-card"><div class="target-title">B · Resultados dispersos alrededor del centro</div><div class="target" aria-label="Medidas dispersas alrededor del centro"><i style="top:34px;left:35px"></i><i style="top:51px;left:77px"></i><i style="top:77px;left:50px"></i><i style="top:38px;left:61px"></i><i style="top:55px;left:35px"></i></div><p>Menor precisión; conjunto más centrado.</p></div></div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 03</span><h3>Empareja cada situación con su concepto</h3></div><div class="exercise-body"><div class="q-list" id="instrument-cases"></div><div class="actions"><button class="btn primary" type="button" id="check-instruments">Comprobar</button></div><div class="answer-box" id="result-instruments" role="status" aria-live="polite"></div></div></div>
+          <article class="lesson-block"><span class="block-tag">◈ Miniinvestigación</span><h3>¿Quién mide con más precisión?</h3><p>Tres científicas miden cinco veces un mismo objeto (cm):</p><div class="table-wrap"><table><thead><tr><th>Científica</th><th>1.ª</th><th>2.ª</th><th>3.ª</th><th>4.ª</th><th>5.ª</th></tr></thead><tbody><tr><td>A</td><td>25,457</td><td>25,521</td><td>25,462</td><td>25,403</td><td>25,490</td></tr><tr><td>B</td><td>25,437</td><td>25,437</td><td>25,438</td><td>25,436</td><td>25,436</td></tr><tr><td>C</td><td>25,44</td><td>25,45</td><td>25,45</td><td>25,43</td><td>25,44</td></tr></tbody></table></div><p class="muted small">La más precisa es la que tiene resultados más agrupados (menor dispersión).</p><p class="muted small">Si el valor real fuese <strong>25,455 cm</strong>, también podrías comparar la exactitud de las medias. Para analizar la sensibilidad, observa cuántos decimales registra cada instrumento.</p><div class="q-list"><div class="q-row"><label for="precise-select">¿Quién ha sido más precisa?</label><select id="precise-select" class="field"><option value="">Selecciona</option><option value="A">Científica A</option><option value="B">Científica B</option><option value="C">Científica C</option></select></div><div class="q-row"><label for="accurate-select">¿Quién ha sido más exacta (por la media)?</label><select id="accurate-select" class="field"><option value="">Selecciona</option><option value="A">Científica A</option><option value="B">Científica B</option><option value="C">Científica C</option></select></div><div class="q-row"><label for="sensitive-select">¿Qué instrumento tiene menor sensibilidad según los decimales mostrados?</label><select id="sensitive-select" class="field"><option value="">Selecciona</option><option value="A">El de A</option><option value="B">El de B</option><option value="C">El de C</option></select></div></div><div class="actions"><button class="btn secondary small" type="button" id="check-precision">Comprobar las tres</button></div><div class="answer-box" id="result-precision" role="status" aria-live="polite"></div></article>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="magnitudes" type="button">← Tema anterior</button><button class="btn primary" data-go="errores" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-errores" data-panel="errores">
+        <div class="chapter-intro"><div class="chapter-number">04</div><div><span class="eyebrow">Calculamos</span><h2>Errores en las medidas</h2><p>Toda medición tiene cierta incertidumbre. Aprende a expresarla.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>¿Por qué aparecen los errores?</h3><p>Por los límites del instrumento, por cómo lo usamos o por pequeñas variaciones durante el experimento. Un error no significa necesariamente que alguien haya trabajado mal.</p><div class="three-col"><div class="tile"><h4>Error absoluto (E<sub>A</sub>)</h4><p>Distancia entre el dato y el valor de referencia, en las mismas unidades.</p><div class="formula" style="font-size:14px">E<sub>A</sub> = |medida − referencia|</div></div><div class="tile"><h4>Error relativo (E<sub>R</sub>)</h4><p>Compara el error absoluto con el valor de referencia.</p><div class="formula" style="font-size:14px">E<sub>R</sub> = E<sub>A</sub> / |V<sub>ref</sub>|</div></div><div class="tile"><h4>Porcentaje de error</h4><p>Expresa el error relativo en tanto por ciento.</p><div class="formula" style="font-size:14px">% error = E<sub>R</sub> × 100</div></div></div><div class="example"><span class="example-title">EJEMPLO RESUELTO</span><p>Una masa se presenta como <strong>(2,0 ± 0,1) g</strong>. Usando 2,0 g como referencia: <strong>E<sub>R</sub> = 0,1 / 2,0 = 0,05</strong> y <strong>% error = 5 %</strong>. El intervalo es de 1,9 a 2,1 g.</p></div><div class="callout cool">Cuando no conocemos el valor verdadero, podemos usar <strong>la media de varias medidas</strong> como valor de referencia aproximado. La media no es necesariamente el valor exacto.</div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 04</span><h3>Resuelve un problema de errores</h3></div><div class="exercise-body"><p>Un experimento presenta la masa <strong>(2,0 ± 0,1) g</strong>. Usa 2,0 g como referencia y completa:</p><div class="numeric-grid"><label for="error-rel">Error relativo (sin unidad)<input id="error-rel" class="field" inputmode="decimal" placeholder="Ej.: 0,12"></label><label for="error-pct">Porcentaje de error (%)<input id="error-pct" class="field" inputmode="decimal" placeholder="Ej.: 12"></label><label for="error-lower">Límite inferior (g)<input id="error-lower" class="field" inputmode="decimal" placeholder="Ej.: 1,2"></label></div><div class="actions"><button class="btn primary" type="button" id="check-errors">Comprobar cálculos</button></div><div class="answer-box" id="result-errors" role="status" aria-live="polite"></div><details class="hint"><summary>Necesito una pista</summary><p>Divide 0,1 entre 2,0 para el error relativo. Multiplícalo por 100 para el porcentaje. Para el límite inferior, resta 0,1 a 2,0.</p></details></div></div>
+          <article class="lesson-block"><span class="block-tag">◈ Simulador</span><h3>¿Qué ocurre cuando repetimos una medida?</h3><p>Cambia los cinco datos de longitud (en cm). La herramienta calculará la media, el error absoluto medio, el relativo y el porcentaje. Primero intenta calcularlos en tu cuaderno.</p><div class="numeric-grid" id="measure-fields"><label for="measure-0">Medida 1 (cm)<input type="text" inputmode="decimal" class="field" id="measure-0" value="13,45"></label><label for="measure-1">Medida 2 (cm)<input type="text" inputmode="decimal" class="field" id="measure-1" value="13,50"></label><label for="measure-2">Medida 3 (cm)<input type="text" inputmode="decimal" class="field" id="measure-2" value="13,57"></label><label for="measure-3">Medida 4 (cm)<input type="text" inputmode="decimal" class="field" id="measure-3" value="13,55"></label><label for="measure-4">Medida 5 (cm)<input type="text" inputmode="decimal" class="field" id="measure-4" value="13,48"></label></div><button class="btn secondary" id="calc-measures" type="button">Calcular paso a paso</button><div class="sim-readout" id="measure-result" role="status" aria-live="polite" hidden></div></article>
+          <article class="lesson-block"><span class="block-tag">◈ Compara</span><h3>¿Qué medición tiene menor error relativo?</h3><div class="two-col"><div class="tile"><h4>Distancia del río</h4><p>220 m ± 0,40 m</p><strong>0,40 / 220 × 100 ≈ 0,18 %</strong></div><div class="tile"><h4>Longitud de una mesa</h4><p>2,5 m ± 0,10 m</p><strong>0,10 / 2,5 × 100 = 4 %</strong></div></div><p class="small muted">El valor con menor porcentaje de error es el del río, aunque su error absoluto sea mayor.</p></article>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="aparatos" type="button">← Tema anterior</button><button class="btn primary" data-go="si" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-si" data-panel="si">
+        <div class="chapter-intro"><div class="chapter-number">05</div><div><span class="eyebrow">Un lenguaje común</span><h2>Sistema Internacional de Unidades</h2><p>Para entendernos, los científicos usan unidades compartidas.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>Las siete magnitudes fundamentales</h3><p>El <strong>Sistema Internacional (SI)</strong> utiliza siete unidades fundamentales. Las demás unidades pueden construirse combinándolas.</p><div class="table-wrap"><table><thead><tr><th>Magnitud</th><th>Unidad</th><th>Símbolo</th></tr></thead><tbody><tr><td>Longitud</td><td>metro</td><td>m</td></tr><tr><td>Masa</td><td>kilogramo</td><td>kg</td></tr><tr><td>Tiempo</td><td>segundo</td><td>s</td></tr><tr><td>Temperatura</td><td>kelvin</td><td>K</td></tr><tr><td>Corriente eléctrica</td><td>amperio</td><td>A</td></tr><tr><td>Cantidad de sustancia</td><td>mol</td><td>mol</td></tr><tr><td>Intensidad luminosa</td><td>candela</td><td>cd</td></tr></tbody></table></div><div class="callout">Ojo: el símbolo del <strong>kelvin es K</strong> (mayúscula), y la unidad fundamental de masa en el SI es el <strong>kilogramo</strong>, no el gramo.</div></article>
+          <article class="lesson-block"><span class="block-tag">◈ Aprende más</span><h3>¿Qué son las magnitudes derivadas?</h3><p>Son magnitudes que combinan otras magnitudes. Por ejemplo, <strong>velocidad = longitud / tiempo</strong>.</p><div class="table-wrap"><table><thead><tr><th>Magnitud derivada</th><th>Unidad del SI</th><th>Ejemplo de relación</th></tr></thead><tbody><tr><td>Área</td><td>m²</td><td>largo × ancho</td></tr><tr><td>Volumen</td><td>m³</td><td>largo × ancho × alto</td></tr><tr><td>Velocidad</td><td>m/s</td><td>distancia / tiempo</td></tr><tr><td>Aceleración</td><td>m/s²</td><td>variación de velocidad / tiempo</td></tr><tr><td>Densidad</td><td>kg/m³</td><td>masa / volumen</td></tr><tr><td>Fuerza</td><td>newton (N)</td><td>kg · m/s²</td></tr><tr><td>Presión</td><td>pascal (Pa)</td><td>N/m²</td></tr><tr><td>Energía</td><td>julio (J)</td><td>N · m</td></tr><tr><td>Potencia</td><td>vatio (W)</td><td>J/s</td></tr></tbody></table></div><div class="callout cool">Unidades de uso habitual: <strong>1 L = 1 dm³ = 0,001 m³</strong>, <strong>1 t = 1000 kg</strong> y <strong>1 ha = 10 000 m²</strong>.</div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 05</span><h3>Elige la unidad correcta</h3></div><div class="exercise-body"><div class="q-list" id="si-cases"></div><div class="actions"><button class="btn primary" type="button" id="check-si">Comprobar unidades</button></div><div class="answer-box" id="result-si" role="status" aria-live="polite"></div></div></div>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="errores" type="button">← Tema anterior</button><button class="btn primary" data-go="conversion" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-conversion" data-panel="conversion">
+        <div class="chapter-intro"><div class="chapter-number">06</div><div><span class="eyebrow">Cambiamos de unidad</span><h2>Múltiplos y submúltiplos</h2><p>Una misma cantidad puede escribirse con distintas unidades.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>¿Qué significan los prefijos?</h3><p>Los prefijos nos indican cuántas veces es mayor o menor una unidad. Son especialmente útiles para números grandes y pequeños.</p><div class="table-wrap"><table><thead><tr><th>Prefijo</th><th>Símbolo</th><th>Factor</th><th>Prefijo</th><th>Símbolo</th><th>Factor</th></tr></thead><tbody><tr><td>tera</td><td>T</td><td>10¹²</td><td>deci</td><td>d</td><td>10⁻¹</td></tr><tr><td>giga</td><td>G</td><td>10⁹</td><td>centi</td><td>c</td><td>10⁻²</td></tr><tr><td>mega</td><td>M</td><td>10⁶</td><td>mili</td><td>m</td><td>10⁻³</td></tr><tr><td>kilo</td><td>k</td><td>10³</td><td>micro</td><td>µ</td><td>10⁻⁶</td></tr><tr><td>hecto</td><td>h</td><td>10²</td><td>nano</td><td>n</td><td>10⁻⁹</td></tr><tr><td>deca</td><td>da</td><td>10¹</td><td>pico</td><td>p</td><td>10⁻¹²</td></tr></tbody></table></div><div class="example"><span class="example-title">EJEMPLO · 50 m → cm</span><p>1 m = 100 cm. Por tanto, <strong>50 × 100 = 5000 cm</strong>.</p></div><div class="two-col"><div class="tile"><h4>Áreas (m²)</h4><p>Cada salto de prefijo decimal supone ×100 o ÷100. Ej.: 1 m² = 10 000 cm².</p></div><div class="tile"><h4>Volúmenes (m³)</h4><p>Cada salto decimal supone ×1000 o ÷1000. Ej.: 1 m³ = 1 000 000 cm³.</p></div></div><div class="callout warning">Importante: <strong>m</strong> (mili) y <strong>M</strong> (mega) no son lo mismo. Tampoco m, m² y m³ se convierten igual.</div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 06</span><h3>Entrena las conversiones</h3></div><div class="exercise-body"><span class="pill" id="conversion-difficulty">Nivel mixto</span><h3 style="margin-top:15px" id="conversion-prompt">50 m = ¿cuántos cm?</h3><div class="operation"><label for="conversion-answer">Tu respuesta:</label><input class="field" type="text" inputmode="decimal" id="conversion-answer" placeholder="Escribe un número"><strong id="conversion-target-unit">cm</strong></div><p class="mini-hint">Puedes escribir coma o punto decimal y usar notación como 1,5e-3.</p><div class="actions"><button type="button" class="btn primary" id="check-conversion">Comprobar</button><button type="button" class="btn ghost" id="next-conversion">Otro ejercicio ↻</button></div><div class="answer-box" id="result-conversion" role="status" aria-live="polite"></div><details class="hint" id="conversion-hint"><summary>Ver una pista</summary><p id="conversion-hint-text">Compara los factores de ambas unidades.</p></details></div></div>
+          <article class="lesson-block"><span class="block-tag">◈ Conversor libre</span><h3>Prueba tus propias conversiones</h3><p>Elige la magnitud y las unidades para comprobar cómo cambia el número.</p><div class="numeric-grid"><label for="converter-group">Tipo de magnitud<select class="field" id="converter-group"><option value="length">Longitud</option><option value="mass">Masa</option><option value="time">Tiempo</option><option value="area">Área</option><option value="volume">Volumen</option><option value="capacity">Capacidad</option></select></label><label for="converter-from">De<select class="field" id="converter-from"></select></label><label for="converter-to">A<select class="field" id="converter-to"></select></label></div><div class="operation"><label for="converter-value">Cantidad</label><input id="converter-value" class="field" type="text" inputmode="decimal" value="1"><button class="btn secondary" id="converter-run" type="button">Convertir</button></div><div class="sim-readout" id="converter-result" role="status" aria-live="polite">Selecciona unidades y pulsa «Convertir».</div></article>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="si" type="button">← Tema anterior</button><button class="btn primary" data-go="cientifica" type="button">Siguiente tema →</button></div>
+      </section>
+
+      <section class="panel" id="panel-cientifica" data-panel="cientifica">
+        <div class="chapter-intro"><div class="chapter-number">07</div><div><span class="eyebrow">Trabajamos con potencias</span><h2>Notación científica</h2><p>Una forma más cómoda de escribir números enormes o diminutos.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Aprende</span><h3>Un número y una potencia de diez</h3><p>En notación científica escribimos un número como <strong>a × 10ⁿ</strong>, donde el valor absoluto de <strong>a</strong> es mayor o igual que 1 y menor que 10, y <strong>n</strong> es un número entero.</p><div class="formula">a × 10<sup>n</sup> <span>con 1 ≤ |a| &lt; 10</span></div><div class="two-col"><div class="tile"><h4>Números grandes</h4><p>45 000 = <strong>4,5 × 10⁴</strong>. El exponente es positivo.</p></div><div class="tile"><h4>Números pequeños</h4><p>0,0007 = <strong>7 × 10⁻⁴</strong>. El exponente es negativo.</p></div></div><h3 style="margin-top:21px">Tres pasos</h3><div class="steps"><div class="science-step"><span class="science-step-num">1</span><div><strong>Busca la primera cifra distinta de cero.</strong><p>Coloca la coma después de ella.</p></div></div><div class="science-step"><span class="science-step-num">2</span><div><strong>Cuenta los lugares que has movido la coma.</strong><p>Ese número será el exponente de 10.</p></div></div><div class="science-step"><span class="science-step-num">3</span><div><strong>Decide el signo.</strong><p>Número original mayor o igual que 10 → exponente positivo. Entre 0 y 1 → negativo. Entre 1 y 10 → cero.</p></div></div></div><div class="callout cool">El <strong>0</strong> puede escribirse como 0 × 10⁰, aunque su coeficiente no cumple la condición habitual de la notación científica normalizada.</div></article>
+          <div class="exercise"><div class="exercise-top"><span class="exercise-badge">PRACTICA 07</span><h3>Escribe el número en notación científica</h3></div><div class="exercise-body"><span class="pill">Se corrige el coeficiente y el exponente</span><h3 id="scientific-prompt" style="margin:16px 0">45 000</h3><div class="operation"><label for="scientific-coeff">Coeficiente</label><input class="field" type="text" id="scientific-coeff" inputmode="decimal" placeholder="Ej.: 4,5"><span>× 10 ^</span><label for="scientific-exp" class="sr-meaning">Exponente</label><input class="field" style="max-width:105px" type="text" id="scientific-exp" inputmode="numeric" placeholder="Ej.: 4"></div><div class="actions"><button class="btn primary" id="check-scientific" type="button">Comprobar</button><button class="btn ghost" id="next-scientific" type="button">Otro número ↻</button></div><div class="answer-box" id="result-scientific" role="status" aria-live="polite"></div><details class="hint"><summary>¿Cómo sé si el exponente es positivo o negativo?</summary><p>Si el número es muy grande (mayor que 10), el exponente es positivo. Si está entre 0 y 1, es negativo. Cuenta cuántas posiciones desplazas la coma.</p></details></div></div>
+          <article class="lesson-block"><span class="block-tag">◈ Dale la vuelta</span><h3>De notación científica a decimal</h3><p>Multiplica por una potencia de diez: mueve la coma a la derecha si el exponente es positivo y a la izquierda si es negativo.</p><div class="two-col"><div class="tile"><h4>3,2 × 10³</h4><p>Mueve 3 lugares a la derecha → <strong>3200</strong>.</p></div><div class="tile"><h4>6,4 × 10⁻³</h4><p>Mueve 3 lugares a la izquierda → <strong>0,0064</strong>.</p></div></div></article>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="conversion" type="button">← Tema anterior</button><button class="btn primary" data-go="desafio" type="button">Ir al desafío ★</button></div>
+      </section>
+
+      <section class="panel" id="panel-desafio" data-panel="desafio">
+        <div class="chapter-intro"><div class="chapter-number">★</div><div><span class="eyebrow">Tu examen de práctica</span><h2>Desafío final</h2><p>15 preguntas aleatorias sobre todo lo aprendido. Sin presión y con explicación final.</p></div></div>
+        <div class="lesson-layout">
+          <article class="lesson-block"><span class="block-tag">◈ Ponte a prueba</span><h3>¿Cómo funciona?</h3><p>Selecciona una respuesta en cada pregunta. Cuando termines, pulsa <strong>Corregir desafío</strong>. Verás tu nota y la explicación de cada respuesta. Puedes repetir con preguntas diferentes.</p><div class="quiz-meta"><span class="pill">15 preguntas</span><span class="pill">7 bloques</span><span class="pill green" id="quiz-best">Mejor resultado: —</span></div><div class="actions"><button class="btn primary" id="generate-quiz" type="button">Preparar mi desafío</button><button class="btn ghost" data-go="inicio" type="button">Volver a repasar</button></div></article>
+          <div id="quiz-container" hidden><div id="quiz-questions"></div><div class="actions"><button class="btn primary" id="grade-quiz" type="button">Corregir desafío ✓</button><button class="btn ghost" id="new-quiz" type="button">Crear otro desafío ↻</button></div><div class="quiz-result" id="quiz-result" role="status" aria-live="polite"></div></div>
+        </div><div class="footer-nav"><button class="btn ghost" data-go="cientifica" type="button">← Tema anterior</button><button class="btn primary" data-go="inicio" type="button">Volver al inicio →</button></div>
+      </section>
+      <footer class="footer">Laboratorio de repaso · Física y Química · 3.º de Diversificación. Material didáctico original adaptado al temario trabajado en clase. Funciona sin conexión una vez descargado. Progreso almacenado únicamente en este dispositivo.</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+  (() => {
+    'use strict';
+    const $ = (s,root=document)=>root.querySelector(s);
+    const $$ = (s,root=document)=>Array.from(root.querySelectorAll(s));
+    const LESSONS=['metodo','magnitudes','aparatos','errores','si','conversion','cientifica'];
+    const STORAGE_KEY='fq3diver-progress-v1';
+    let progress={done:[],best:null};
+    try {const stored=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');if(Array.isArray(stored.done))progress.done=stored.done.filter(x=>LESSONS.includes(x));if(Number.isFinite(stored.best))progress.best=stored.best;}catch(_e){}
+    function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(progress));}catch(_e){}}
+    function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2800);}
+    function updateProgress(){const n=progress.done.length;$('#side-progress-count').textContent=n+'/7';$('#side-track').setAttribute('aria-valuenow',n);$('#side-bar').style.width=(n/7*100)+'%';$('#home-completed').textContent=n+' de 7 completados';$$('[data-check]').forEach(el=>el.textContent=progress.done.includes(el.dataset.check)?'✓':'');$$('[data-card-check]').forEach(el=>el.textContent=progress.done.includes(el.dataset.cardCheck)?'✓ Completado':'');$('#quiz-best').textContent='Mejor resultado: '+(progress.best===null?'—':progress.best+'/15');$('#best-mini').textContent=progress.best===null?'':'Récord '+progress.best+'/15';}
+    function markCompleted(id){if(!progress.done.includes(id)){progress.done.push(id);save();updateProgress();toast('¡Has completado este bloque! ✓');}}
+    function showFeedback(id,good,html,kind){const el=$(id);el.className='answer-box show '+(kind||(good?'ok':'no'));el.innerHTML=html;}
+    function removeFeedback(id){const el=$(id);el.className='answer-box';el.textContent='';}
+    function go(id){if(!$('#panel-'+id))return;$$('[data-panel]').forEach(el=>el.classList.toggle('active',el.dataset.panel===id));$$('button[data-go]').forEach(el=>el.classList.toggle('active',el.dataset.go===id));document.title=(id==='inicio'?'Inicio':id==='desafio'?'Desafío final':$('button[data-go="'+id+'"] span:nth-child(2)')?.textContent||'Repaso')+' · Laboratorio de repaso';const sidebar=$('#sidebar');sidebar.classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');if(location.hash!=='#'+id){try{history.replaceState(null,'','#'+id);}catch(_e){}}window.scrollTo(0,0);}
+    document.addEventListener('click',e=>{const nav=e.target.closest('[data-go]');if(nav&&!nav.matches('[disabled]')){e.preventDefault();go(nav.dataset.go);}});
+    $$('article[data-go]').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go(el.dataset.go);}}));
+    $('#menu-toggle').addEventListener('click',()=>{const side=$('#sidebar'),open=side.classList.toggle('open');$('#menu-toggle').setAttribute('aria-expanded',String(open));});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){ $('#sidebar').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');}});
+    function parseNumber(value){const clean=String(value??'').trim().replace(/\s/g,'').replace(',','.').replace(/×10\^?/i,'e');if(!clean||!/^[-+]?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?$/i.test(clean))return NaN;return Number(clean);}
+    function closeTo(actual,expected){return Number.isFinite(actual)&&Math.abs(actual-expected)<=Math.max(1e-12,Math.abs(expected)*0.000001);}
+    function fmtPlain(num){return new Intl.NumberFormat('es-ES',{maximumFractionDigits:15,useGrouping:true}).format(num);}
+    function fmt(num,max=8){if(!Number.isFinite(num))return '—';if(num!==0&&(Math.abs(num)<1e-6||Math.abs(num)>=1e12))return num.toExponential(5).replace('.',',').replace('e+',' × 10^').replace('e-',' × 10^-');return new Intl.NumberFormat('es-ES',{maximumFractionDigits:max,useGrouping:true}).format(num);}
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+    function shuffle(xs){const a=[...xs];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    const optionSelect=(choices,id)=>`<select class="field" id="${id}"><option value="">Selecciona una respuesta</option>${choices.map(ch=>`<option value="${escapeHtml(ch)}">${escapeHtml(ch)}</option>`).join('')}</select>`;
+    // 01: método científico
+    const methodPhases=[{id:1,name:'Observación'},{id:2,name:'Formulación de hipótesis'},{id:3,name:'Experimentación'},{id:4,name:'Análisis y conclusiones'},{id:5,name:'Comunicación de resultados'}];
+    let methodOrder=[3,1,5,2,4];
+    function renderMethodOrder(){const host=$('#method-order');host.innerHTML=methodOrder.map((id,i)=>`<div class="order-item"><span class="order-position">${i+1}.</span><span class="order-name">${escapeHtml(methodPhases.find(x=>x.id===id).name)}</span><div class="move-group"><button type="button" data-move="${i}" data-dir="-1" ${i===0?'disabled':''} aria-label="Subir ${escapeHtml(methodPhases.find(x=>x.id===id).name)}">↑</button><button type="button" data-move="${i}" data-dir="1" ${i===methodOrder.length-1?'disabled':''} aria-label="Bajar ${escapeHtml(methodPhases.find(x=>x.id===id).name)}">↓</button></div></div>`).join('');}
+    $('#method-order').addEventListener('click',e=>{const btn=e.target.closest('[data-move]');if(!btn)return;const i=Number(btn.dataset.move),j=i+Number(btn.dataset.dir);if(j<0||j>=methodOrder.length)return;[methodOrder[i],methodOrder[j]]=[methodOrder[j],methodOrder[i]];renderMethodOrder();removeFeedback('#result-method');});
+    $('#check-method').addEventListener('click',()=>{const ok=methodOrder.every((x,i)=>x===i+1);showFeedback('#result-method',ok,ok?'¡Correcto! Has colocado las cinco fases en orden.':'Todavía no están todas en orden. Piensa: primero observamos, después planteamos una idea y luego la ponemos a prueba.');if(ok)markCompleted('metodo');});
+    $('#reset-method').addEventListener('click',()=>{methodOrder=shuffle([1,2,3,4,5]);if(methodOrder.every((x,i)=>x===i+1))methodOrder.reverse();renderMethodOrder();removeFeedback('#result-method');});
+    const methodCases=[['Una alumna apunta cuánto tarda en desaparecer el azúcar.','Experimentación'],['Un grupo dice: «El azúcar se disuelve antes con agua caliente».','Hipótesis'],['Un equipo publica los pasos para que otros repitan la prueba.','Comunicación']];
+    $('#method-cases').innerHTML=methodCases.map((c,i)=>`<div class="q-row"><label for="method-case-${i}">${escapeHtml(c[0])}</label>${optionSelect(['Observación','Hipótesis','Experimentación','Conclusiones','Comunicación'],'method-case-'+i)}</div>`).join('');
+    $('#check-method-cases').addEventListener('click',()=>{const ok=methodCases.every((c,i)=>$('#method-case-'+i).value===c[1]);showFeedback('#result-method-cases',ok,ok?'¡Perfecto! Has identificado las fases.':'Revisa las frases. <strong>Hipótesis</strong> es lo que creemos; <strong>experimentación</strong> es cuando medimos; <strong>comunicación</strong> es compartir el resultado.');});
+    // 02: magnitudes
+    const magnitudeCases=[['Altura',true],['Bondad',false],['Masa',true],['Motivación',false],['Tiempo',true],['Generosidad',false],['Volumen',true],['Comodidad',false],['Profundidad',true],['Temperatura',true]];
+    $('#magnitude-classes').innerHTML=magnitudeCases.map(([name],i)=>`<div class="class-item"><span>${name}</span><select id="magnitude-class-${i}" aria-label="${name}: ¿es magnitud física?"><option value="">Elige</option><option value="si">Sí</option><option value="no">No</option></select></div>`).join('');
+    $('#check-magnitudes').addEventListener('click',()=>{const errors=magnitudeCases.filter(([name,yes],i)=>$('#magnitude-class-'+i).value!==(yes?'si':'no'));const ok=errors.length===0;showFeedback('#result-magnitudes',ok,ok?'¡Bien! Has distinguido las propiedades que se pueden medir objetivamente.':`Tienes ${errors.length} respuesta(s) pendiente(s) o incorrecta(s). Recuerda: una magnitud física permite obtener un número mediante un procedimiento de medida. Comprueba especialmente las propiedades personales.`);if(ok)markCompleted('magnitudes');});
+    $('#check-magnitude-triplet').addEventListener('click',()=>{const ok=$('#magnitud-type').value==='temperatura'&&closeTo(parseNumber($('#magnitud-value').value),20)&&$('#magnitud-unit').value==='°C';showFeedback('#result-magnitude-triplet',ok,ok?'¡Correcto! Magnitud: temperatura · valor: 20 · unidad: grados Celsius (°C).':'Busca la propiedad medida (¿qué mide un termómetro?), el número y el símbolo que aparece tras él.');});
+    // 03: aparatos
+    const instrumentCases=[['Una regla indica que el lápiz mide 15 cm.','Directa'],['Multiplico largo por ancho para hallar un área.','Indirecta'],['Cinco medidas repetidas son casi iguales.','Precisión'],['El termómetro marca 20,0 °C cuando la referencia es 20,1 °C.','Exactitud'],['Una báscula detecta cambios de 0,01 g.','Sensibilidad']];
+    $('#instrument-cases').innerHTML=instrumentCases.map((c,i)=>`<div class="q-row"><label for="instrument-${i}">${escapeHtml(c[0])}</label>${optionSelect(['Directa','Indirecta','Precisión','Exactitud','Sensibilidad'],'instrument-'+i)}</div>`).join('');
+    $('#check-instruments').addEventListener('click',()=>{const wrong=instrumentCases.filter((c,i)=>$('#instrument-'+i).value!==c[1]);const ok=wrong.length===0;showFeedback('#result-instruments',ok,ok?'¡Muy bien! Distingues las dos formas de medir y las propiedades de los instrumentos.':`Revisa ${wrong.length} respuesta(s). Una <strong>medida indirecta</strong> necesita un cálculo; la <strong>precisión</strong> habla de resultados repetidos; la <strong>exactitud</strong>, de cercanía al valor correcto.`);if(ok)markCompleted('aparatos');});
+    $('#check-precision').addEventListener('click',()=>{const good=$('#precise-select').value==='B'&&$('#accurate-select').value==='A'&&$('#sensitive-select').value==='C';showFeedback('#result-precision',good,good?'¡Exacto! <strong>B</strong> es la más precisa (solo 0,002 cm de amplitud). <strong>A</strong> es la más exacta: su media es 25,4666 cm, la más próxima a 25,455 cm. <strong>C</strong> tiene menor sensibilidad según sus medidas, que muestran centésimas en vez de milésimas.':'Revisa los tres conceptos: <strong>precisión</strong> = poca dispersión (B); <strong>exactitud</strong> = media más cercana al valor real (A); <strong>menor sensibilidad</strong> = resolución más gruesa (C, centésimas).');});
+    // 04: errores
+    $('#check-errors').addEventListener('click',()=>{const rel=parseNumber($('#error-rel').value),pct=parseNumber($('#error-pct').value),lower=parseNumber($('#error-lower').value);const ok=closeTo(rel,.05)&&closeTo(pct,5)&&closeTo(lower,1.9);showFeedback('#result-errors',ok,ok?'¡Resultado correcto! E<sub>R</sub> = 0,1 ÷ 2,0 = 0,05; porcentaje = 5 %; límite inferior = 2,0 − 0,1 = 1,9 g.':'Todavía hay algún cálculo incorrecto. Comprueba el orden: primero divide 0,1 / 2,0; luego multiplica por 100; después calcula 2,0 − 0,1.');if(ok)markCompleted('errores');});
+    $('#calc-measures').addEventListener('click',()=>{const values=[0,1,2,3,4].map(i=>parseNumber($('#measure-'+i).value));if(values.some(x=>!Number.isFinite(x))){$('#measure-result').hidden=false;$('#measure-result').textContent='Escribe cinco números válidos (puedes usar coma decimal).';return;}const mean=values.reduce((a,b)=>a+b,0)/values.length;const ea=values.map(x=>Math.abs(x-mean));const avg=ea.reduce((a,b)=>a+b,0)/values.length;const er=mean===0?null:avg/Math.abs(mean);const out=$('#measure-result');out.hidden=false;out.innerHTML=`<strong>1. Media de las medidas:</strong> (${values.map(x=>fmt(x)).join(' + ')}) / 5 = <strong>${fmt(mean,6)} cm</strong>.<br><strong>2. Errores absolutos individuales:</strong> ${ea.map(x=>fmt(x,6)).join('; ')} cm.<br><strong>3. Error absoluto medio:</strong> ${fmt(avg,6)} cm.<br><strong>4. Error relativo:</strong> ${er===null?'No definido (media = 0)':fmt(er,8)}.<br><strong>5. Porcentaje de error:</strong> ${er===null?'No definido':fmt(er*100,5)+' %'}.<br><span class="muted small">La media se usa aquí como referencia aproximada; no es un valor exacto garantizado.</span>`;});
+    // 05: SI
+    const siCases=[['Tiempo','s'],['Temperatura absoluta','K'],['Masa (unidad fundamental)','kg'],['Velocidad','m/s'],['Energía','J'],['Potencia','W'],['Intensidad de corriente','A']];
+    $('#si-cases').innerHTML=siCases.map((c,i)=>`<div class="q-row"><label for="si-case-${i}">${escapeHtml(c[0])}</label>${optionSelect(['m','kg','s','K','A','m/s','J','W','°C'],'si-case-'+i)}</div>`).join('');
+    $('#check-si').addEventListener('click',()=>{const wrong=siCases.filter((c,i)=>$('#si-case-'+i).value!==c[1]);const ok=wrong.length===0;showFeedback('#result-si',ok,ok?'¡Muy bien! Reconoces las unidades fundamentales y algunas derivadas del SI.':`Hay ${wrong.length} respuesta(s) por revisar. Consulta la tabla superior. Recuerda que <strong>K</strong> es kelvin y <strong>W</strong> mide potencia.`);if(ok)markCompleted('si');});
+    // 06: conversiones, todas las unidades tienen un factor respecto a la referencia común de su grupo.
+    const UNIT_GROUPS={
+      length:{m:1,mm:.001,cm:.01,dm:.1,dam:10,hm:100,km:1000},
+      mass:{kg:1,g:.001,mg:1e-6,cg:1e-5,'µg':1e-9,t:1000},
+      time:{s:1,ms:.001,'µs':1e-6,min:60,h:3600,Ts:1e12},
+      area:{'m²':1,'mm²':1e-6,'cm²':1e-4,'dm²':.01,'dam²':100,'hm²':10000,'km²':1e6,ha:10000},
+      volume:{'m³':1,'mm³':1e-9,'cm³':1e-6,'dm³':.001,'dam³':1000,'L':.001,'mL':1e-6},
+      capacity:{L:1,mL:.001,cL:.01,dL:.1,'m³':1000,'dm³':1}
+    };
+    const conversionTasks=[
+      {a:50,from:'m',to:'cm',group:'length',help:'Un metro tiene 100 centímetros. Multiplica por 100.'},
+      {a:.06,from:'km',to:'dam',group:'length',help:'1 km = 100 dam. Multiplica 0,06 por 100.'},
+      {a:24,from:'cm',to:'m',group:'length',help:'100 cm = 1 m. Divide entre 100.'},
+      {a:.005,from:'hm',to:'cm',group:'length',help:'1 hm = 10 000 cm.'},
+      {a:5000,from:'kg',to:'g',group:'mass',help:'1 kg = 1000 g.'},
+      {a:200,from:'cg',to:'g',group:'mass',help:'1 cg = 0,01 g.'},
+      {a:20,from:'g',to:'kg',group:'mass',help:'1 kg = 1000 g.'},
+      {a:400,from:'µg',to:'g',group:'mass',help:'1 µg es una millonésima de gramo.'},
+      {a:16,from:'ms',to:'s',group:'time',help:'1 ms = 0,001 s.'},
+      {a:1000,from:'µs',to:'ms',group:'time',help:'1000 µs = 1 ms.'},
+      {a:4,from:'cm²',to:'m²',group:'area',help:'1 cm² = 0,0001 m² (porque 1 cm = 0,01 m y se eleva al cuadrado).'},
+      {a:75,from:'cm³',to:'dm³',group:'volume',help:'1 dm³ = 1000 cm³.'},
+      {a:.5,from:'m³',to:'cm³',group:'volume',help:'1 m³ = 1 000 000 cm³.'},
+      {a:1.5,from:'hm²',to:'mm²',group:'area',help:'1 hm = 100 000 mm; en superficie el factor se eleva al cuadrado.'},
+      {a:3,from:'L',to:'m³',group:'capacity',help:'1 L = 0,001 m³.'},
+      {a:2,from:'h',to:'s',group:'time',help:'1 h = 3600 s.'},
+      {a:2,from:'t',to:'kg',group:'mass',help:'1 tonelada = 1000 kg.'},
+      {a:1.5,from:'Ts',to:'s',group:'time',help:'Tera significa 10¹².'}
+    ];
+    let convIndex=0;const convSolved=new Set();
+    function conversionValue(t){return t.a*UNIT_GROUPS[t.group][t.from]/UNIT_GROUPS[t.group][t.to];}
+    function renderConversion(){const t=conversionTasks[convIndex];$('#conversion-prompt').textContent=fmt(t.a)+' '+t.from+' = ¿cuántos '+t.to+'?';$('#conversion-target-unit').textContent=t.to;$('#conversion-answer').value='';$('#conversion-hint-text').textContent=t.help;$('#conversion-difficulty').textContent=['length','mass','time'].includes(t.group)?'Longitud, masa o tiempo':'Área, volumen o capacidad';$('#conversion-hint').open=false;removeFeedback('#result-conversion');}
+    $('#check-conversion').addEventListener('click',()=>{const t=conversionTasks[convIndex],actual=parseNumber($('#conversion-answer').value),answer=conversionValue(t);const ok=closeTo(actual,answer);showFeedback('#result-conversion',ok,ok?`¡Correcto! ${fmt(t.a)} ${t.from} = <strong>${fmt(answer,12)} ${t.to}</strong>. ${t.help}`:'No es correcto todavía. Comprueba si la unidad de destino es mayor o menor. Puedes abrir la pista de debajo.');if(ok){convSolved.add(convIndex);if(convSolved.size>=3)markCompleted('conversion');else toast('¡Bien! Resuelve '+(3-convSolved.size)+' conversión(es) diferente(s) más para completar el bloque.');}});
+    $('#next-conversion').addEventListener('click',()=>{let next=Math.floor(Math.random()*conversionTasks.length);if(next===convIndex)next=(next+1)%conversionTasks.length;convIndex=next;renderConversion();});
+    $('#conversion-answer').addEventListener('keydown',e=>{if(e.key==='Enter')$('#check-conversion').click();});
+    function setConverterUnits(){const group=$('#converter-group').value,units=Object.keys(UNIT_GROUPS[group]);for(const id of ['converter-from','converter-to']){$('#'+id).innerHTML=units.map(u=>`<option value="${escapeHtml(u)}">${escapeHtml(u)}</option>`).join('');}$('#converter-from').value=units[0];$('#converter-to').value=units[Math.min(1,units.length-1)];$('#converter-result').textContent='Introduce una cantidad y pulsa «Convertir».';}
+    $('#converter-group').addEventListener('change',setConverterUnits);
+    $('#converter-run').addEventListener('click',()=>{const group=$('#converter-group').value,from=$('#converter-from').value,to=$('#converter-to').value,value=parseNumber($('#converter-value').value),result=$('#converter-result');if(!Number.isFinite(value)){result.textContent='Escribe un número válido (por ejemplo, 2,5).';return;}const fac=UNIT_GROUPS[group][from]/UNIT_GROUPS[group][to];result.innerHTML=`<strong>${fmt(value,10)} ${escapeHtml(from)}</strong> = <span class="result-emphasis">${fmt(value*fac,12)} ${escapeHtml(to)}</span><br><span class="muted small">Factor de conversión: multiplicar por ${fmt(fac,12)}.</span>`;});
+    // 07: notación científica
+    const scientificTasks=[{n:45000,a:4.5,e:4},{n:.0007,a:7,e:-4},{n:12000000000,a:1.2,e:10},{n:.002,a:2,e:-3},{n:13400,a:1.34,e:4},{n:.5,a:5,e:-1},{n:57.001,a:5.7001,e:1},{n:.0000007,a:7,e:-7},{n:.000000005,a:5,e:-9},{n:2500,a:2.5,e:3},{n:.00000345,a:3.45,e:-6},{n:780000,a:7.8,e:5}];
+    let sciIndex=0;const sciSolved=new Set();
+    function renderScientific(){const t=scientificTasks[sciIndex];$('#scientific-prompt').textContent=fmtPlain(t.n);$('#scientific-coeff').value='';$('#scientific-exp').value='';removeFeedback('#result-scientific');}
+    function scientificForm(t){return fmt(t.a,9)+' × 10'+(t.e<0?'⁻':'')+String(Math.abs(t.e)).split('').map(d=>['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'][Number(d)]).join('');}
+    $('#check-scientific').addEventListener('click',()=>{const t=scientificTasks[sciIndex],a=parseNumber($('#scientific-coeff').value),e=parseNumber($('#scientific-exp').value);const ok=closeTo(a,t.a)&&e===t.e;showFeedback('#result-scientific',ok,ok?`¡Muy bien! <strong>${fmtPlain(t.n)} = ${scientificForm(t)}</strong>. Coeficiente entre 1 y 10 y exponente correcto.`:`Comprueba el desplazamiento de la coma. El coeficiente debe quedar entre 1 y 10; el exponente tiene signo ${t.e>0?'positivo':'negativo'}.`);if(ok){sciSolved.add(sciIndex);if(sciSolved.size>=3)markCompleted('cientifica');else toast('¡Bien! Resuelve '+(3-sciSolved.size)+' número(s) diferente(s) más para completar el bloque.');}});
+    $('#next-scientific').addEventListener('click',()=>{let next=Math.floor(Math.random()*scientificTasks.length);if(next===sciIndex)next=(next+1)%scientificTasks.length;sciIndex=next;renderScientific();});
+    // Desafío: varias preguntas por bloque; elige dos de cada bloque y una adicional.
+    const BANK=[
+      {cat:'metodo',q:'¿Qué fase va primero en una investigación?',options:['Observación','Difusión','Conclusiones','Experimentación'],correct:0,why:'Primero observamos lo que ocurre y formulamos una pregunta.'},
+      {cat:'metodo',q:'¿Qué es una hipótesis?',options:['Una posible explicación que debe comprobarse','Una ley que nunca puede cambiar','El resultado final','Una unidad de medida'],correct:0,why:'La hipótesis es una idea comprobable con evidencias.'},
+      {cat:'metodo',q:'¿Para qué se repite un experimento?',options:['Para comprobar que los resultados son fiables','Para cambiar la pregunta cada vez','Para evitar medir','Para garantizar que la hipótesis sea cierta'],correct:0,why:'Repetir permite estudiar la variabilidad y comprobar la fiabilidad.'},
+      {cat:'metodo',q:'¿Qué fase permite a otras personas reproducir la investigación?',options:['Comunicación de resultados','Observación','Hipótesis','Medida indirecta'],correct:0,why:'Compartir el procedimiento y los resultados facilita la revisión.'},
+      {cat:'magnitudes',q:'¿Cuál NO es una magnitud física?',options:['Bondad','Tiempo','Longitud','Masa'],correct:0,why:'La bondad no tiene una medida física objetiva como el tiempo o la masa.'},
+      {cat:'magnitudes',q:'En «He recorrido 300 km», ¿cuál es la unidad?',options:['km','300','Distancia','Recorrer'],correct:0,why:'km es la unidad; 300 es el valor y la distancia es la magnitud.'},
+      {cat:'magnitudes',q:'En «20 °C», ¿cuál es el valor numérico?',options:['20','°C','Temperatura','Kelvin'],correct:0,why:'20 es el valor y °C es la unidad utilizada.'},
+      {cat:'magnitudes',q:'¿Cuál de estas palabras es una unidad de longitud?',options:['Metro','Longitud','Superficie','Profundidad'],correct:0,why:'Metro es la unidad de medida, no una magnitud.'},
+      {cat:'aparatos',q:'Medir un lápiz con una regla es una medida…',options:['Directa','Indirecta','Relativa','Calculada'],correct:0,why:'La longitud se lee directamente en la regla.'},
+      {cat:'aparatos',q:'Calcular un área multiplicando largo por ancho es una medida…',options:['Indirecta','Directa','Sin unidad','Imposible'],correct:0,why:'Se calcula a partir de otras mediciones.'},
+      {cat:'aparatos',q:'Cinco mediciones muy parecidas entre sí indican buena…',options:['Precisión','Exactitud necesariamente','Temperatura','Densidad'],correct:0,why:'La precisión describe la repetibilidad.'},
+      {cat:'aparatos',q:'La capacidad de una balanza para detectar diferencias muy pequeñas es su…',options:['Sensibilidad','Densidad','Masa','Velocidad'],correct:0,why:'La sensibilidad permite detectar variaciones pequeñas.'},
+      {cat:'errores',q:'Un valor es 10 cm y la referencia es 12 cm. ¿Cuál es el error absoluto?',options:['2 cm','22 cm','0,2 cm','20 cm'],correct:0,why:'Error absoluto = |10 − 12| = 2 cm.'},
+      {cat:'errores',q:'Eₐ = 0,2 g y valor de referencia = 4 g. ¿Cuál es el error relativo?',options:['0,05','5','20','0,8'],correct:0,why:'0,2 / 4 = 0,05.'},
+      {cat:'errores',q:'¿Cuánto vale el 0,05 de error relativo expresado en porcentaje?',options:['5 %','0,05 %','50 %','0,5 %'],correct:0,why:'0,05 × 100 = 5 %.'},
+      {cat:'errores',q:'¿Qué valores pertenecen a 2,0 ± 0,1 g?',options:['De 1,9 a 2,1 g','De 1,0 a 3,0 g','Solo 2,0 g','De 2,1 a 2,2 g'],correct:0,why:'Restamos y sumamos 0,1 a 2,0.'},
+      {cat:'si',q:'¿Qué unidad fundamental del SI usamos para el tiempo?',options:['Segundo (s)','Hora (h)','Minuto (min)','Día'],correct:0,why:'El segundo (s) es la unidad básica del SI para el tiempo.'},
+      {cat:'si',q:'¿Cuál es el símbolo correcto del kelvin?',options:['K','k','°K','Ke'],correct:0,why:'El símbolo oficial es K, mayúscula y sin grado.'},
+      {cat:'si',q:'La unidad de velocidad en el SI es…',options:['m/s','km','m²','kg/m³'],correct:0,why:'La velocidad relaciona longitud y tiempo: m/s.'},
+      {cat:'si',q:'¿Qué magnitud se mide en vatios (W)?',options:['Potencia','Energía','Masa','Tiempo'],correct:0,why:'La potencia se mide en vatios, equivalentes a julios por segundo.'},
+      {cat:'conversion',q:'¿A cuántos centímetros equivalen 2 m?',options:['200 cm','20 cm','2000 cm','0,02 cm'],correct:0,why:'1 m = 100 cm, así que 2 m = 200 cm.'},
+      {cat:'conversion',q:'¿A cuántos gramos equivalen 3 kg?',options:['3000 g','300 g','30 g','0,003 g'],correct:0,why:'1 kg = 1000 g.'},
+      {cat:'conversion',q:'¿Cuántos cm² hay en 1 m²?',options:['10 000 cm²','100 cm²','1000 cm²','10 cm²'],correct:0,why:'1 m = 100 cm, por eso 1 m² = 100² = 10 000 cm².'},
+      {cat:'conversion',q:'¿A cuántos litros equivale 1 m³?',options:['1000 L','100 L','1 L','10 L'],correct:0,why:'1 m³ = 1000 dm³ = 1000 L.'},
+      {cat:'cientifica',q:'45 000 en notación científica es…',options:['4,5 × 10⁴','45 × 10⁴','4,5 × 10⁻⁴','0,45 × 10²'],correct:0,why:'Desplazamos cuatro lugares la coma hacia la izquierda.'},
+      {cat:'cientifica',q:'0,003 en notación científica es…',options:['3 × 10⁻³','3 × 10³','0,3 × 10⁻³','30 × 10⁻³'],correct:0,why:'Movemos la coma tres lugares a la derecha: exponente −3.'},
+      {cat:'cientifica',q:'¿Cuánto es 2,5 × 10³?',options:['2500','250','0,0025','25 000'],correct:0,why:'10³ = 1000; multiplicamos 2,5 por 1000.'},
+      {cat:'cientifica',q:'¿Cuál de estos números está en notación científica normalizada?',options:['6,2 × 10⁻⁵','62 × 10⁻⁵','0,62 × 10⁻⁵','62 × 10⁵'],correct:0,why:'El valor absoluto del coeficiente debe estar entre 1 y 10.'}
+    ];
+    let currentQuiz=[],currentAnswers={},graded=false;
+    function makeQuiz(){const selected=[];for(const cat of LESSONS)selected.push(...shuffle(BANK.filter(q=>q.cat===cat)).slice(0,2));selected.push(shuffle(BANK.filter(q=>!selected.includes(q)))[0]);currentQuiz=shuffle(selected).map(q=>({...q,choices:shuffle(q.options)}));currentAnswers={};graded=false;$('#quiz-container').hidden=false;$('#quiz-result').className='quiz-result';$('#grade-quiz').disabled=false;$('#quiz-questions').innerHTML=currentQuiz.map((q,i)=>`<div class="quiz-question" data-question="${i}"><span class="quiz-idx">Pregunta ${i+1} de 15 · ${escapeHtml(({metodo:'Método científico',magnitudes:'Magnitudes',aparatos:'Medidas',errores:'Errores',si:'Sistema Internacional',conversion:'Conversiones',cientifica:'Notación científica'})[q.cat])}</span><h3>${escapeHtml(q.q)}</h3><div class="choice-grid">${q.choices.map((option,j)=>`<button type="button" class="choice" data-answer="${j}" aria-pressed="false">${escapeHtml(option)}</button>`).join('')}</div><div class="quiz-reason" hidden></div></div>`).join('');}
+    $('#generate-quiz').addEventListener('click',()=>{makeQuiz();$('#quiz-container').scrollIntoView({behavior:'smooth',block:'start'});});
+    $('#new-quiz').addEventListener('click',()=>{makeQuiz();$('#quiz-container').scrollIntoView({behavior:'smooth',block:'start'});});
+    $('#quiz-questions').addEventListener('click',e=>{const btn=e.target.closest('[data-answer]');if(!btn||graded)return;const el=btn.closest('[data-question]'),i=Number(el.dataset.question);currentAnswers[i]=Number(btn.dataset.answer);$$('[data-answer]',el).forEach(b=>{const chosen=b===btn;b.classList.toggle('selected',chosen);b.setAttribute('aria-pressed',String(chosen));});});
+    $('#grade-quiz').addEventListener('click',()=>{const answered=Object.keys(currentAnswers).length;if(answered<15){toast('Te faltan '+(15-answered)+' pregunta(s). Respóndelas antes de corregir.');return;}graded=true;$('#grade-quiz').disabled=true;let score=0;currentQuiz.forEach((q,i)=>{const host=$(`[data-question="${i}"]`),buttons=$$('[data-answer]',host),correct=q.choices.indexOf(q.options[q.correct]),selected=currentAnswers[i],ok=selected===correct;if(ok)score++;buttons.forEach((btn,j)=>{btn.classList.remove('selected');btn.classList.toggle('correct',j===correct);btn.classList.toggle('wrong',j===selected&&!ok);btn.disabled=true;btn.setAttribute('aria-pressed',String(j===selected));});const box=$('.quiz-reason',host);box.hidden=false;box.className='quiz-reason '+(ok?'answer-box show ok':'answer-box show no');box.textContent=(ok?'✓ ¡Correcto! ':'✗ Respuesta correcta: '+q.options[q.correct]+'. ')+q.why;});if(progress.best===null||score>progress.best){progress.best=score;save();updateProgress();}const box=$('#quiz-result');box.classList.add('show');box.innerHTML=`<span class="eyebrow">Tu resultado</span><div class="quiz-number">${score}/15</div><h3>${score===15?'¡Excelente! Has acertado todo.':score>=11?'¡Muy buen trabajo!':score>=7?'¡Buen comienzo! Sigue practicando.':'Sigue entrenando: puedes mejorar.'}</h3><p class="muted small">Has acertado ${score} de 15 preguntas (${Math.round(score/15*100)} %). Revisa los comentarios bajo cada ejercicio. Puedes generar otro desafío cuando quieras.</p><div class="actions"><button type="button" class="btn primary" id="quiz-repeat">Intentar otra vez ↻</button><button type="button" class="btn ghost" data-go="inicio">Volver al inicio</button></div>`;$('#quiz-repeat').addEventListener('click',()=>{makeQuiz();$('#quiz-container').scrollIntoView({behavior:'smooth',block:'start'});});box.scrollIntoView({behavior:'smooth',block:'center'});});
+    // Inicialización.
+    updateProgress();renderMethodOrder();renderConversion();renderScientific();setConverterUnits();
+    const initial=decodeURIComponent(location.hash.replace('#',''));if(initial&&$('#panel-'+initial))go(initial);
+  })();
+  </script>
+</body>
+</html>
