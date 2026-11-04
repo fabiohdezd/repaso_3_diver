@@ -212,6 +212,12 @@
       .quiz-question{padding:16px}
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+    /* Enlace a la portada general de 3.º de Diversificación */
+    .aula-back{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 13px;border:1px solid #b9dcd5;background:#e7f7f3;color:#096d67;border-radius:11px;font-size:12px;font-weight:800;white-space:nowrap;text-decoration:none}
+    .aula-back:hover{background:#d5f0e9;border-color:#82c8bb}
+    .top-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+    @media(max-width:610px){.topbar{align-items:flex-start;flex-wrap:wrap}.top-actions{justify-content:flex-start}}
   </style>
 </head>
 <body>
@@ -242,7 +248,7 @@
       <div class="side-bottom"><div class="side-progress"><div class="tiny-line"><span>Tu avance</span><span id="side-progress-count">0/7</span></div><div class="track" role="progressbar" aria-label="Progreso de módulos" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="side-track"><span id="side-bar"></span></div><div class="side-note">Se guarda en este navegador. Sin cuentas ni registros.</div></div></div>
     </aside>
     <main class="main" id="contenido">
-      <div class="topbar"><span class="eyebrow">Unidad 2 · Actividad científica y matemática</span><span class="top-right"><span class="top-dot"></span>Repaso a tu ritmo</span></div>
+      <div class="topbar"><span class="eyebrow">Unidad 2 · Actividad científica y matemática</span><div class="top-actions"><span class="top-right"><span class="top-dot"></span>Repaso a tu ritmo</span><a class="aula-back" href="../../" aria-label="Volver al Aula de Repaso de 3.º de Diversificación">🏠 Volver al Aula de Repaso ↗</a></div></div>
       <section class="panel active" id="panel-inicio" data-panel="inicio">
         <div class="hero"><div class="hero-copy"><span class="hero-kicker">✦ Tu espacio para entender la ciencia</span><h1>La ciencia se aprende<br>haciendo.</h1><p>Teoría en palabras sencillas, ejercicios que se corrigen solos y retos para llegar al examen con confianza.</p><button type="button" class="btn light" data-go="metodo">Empezar a repasar <span aria-hidden="true">→</span></button></div><div class="hero-art" aria-hidden="true"><div class="orb"><div class="orb-core">⚛</div></div><span class="float-label one">10³ = 1000</span><span class="float-label two">✓ ¡Bien hecho!</span></div></div>
         <div class="section-head"><div><span class="eyebrow">Tu recorrido</span><h2>Siete temas. Un objetivo.</h2><p class="muted small" style="margin:0">Elige por dónde empezar. Puedes repetir todos los ejercicios.</p></div><span class="pill green" id="home-completed">0 de 7 completados</span></div>
