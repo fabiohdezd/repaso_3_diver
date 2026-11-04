@@ -10,7 +10,7 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fondo);color:var(--texto);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
 button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f7b842;outline-offset:2px}
 header{background:var(--oscuro);color:white}.contenedor{max-width:1100px;margin:auto;padding:0 18px}
-.cabecera{padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:14px}.logo{font-size:1.17rem;font-weight:900}.logo small{font-size:.76rem;display:block;font-weight:500;letter-spacing:.7px;color:#c8d7fa}.etiqueta{border:1px solid #7b91bd;border-radius:30px;padding:5px 12px;font-size:.85rem}
+.cabecera{padding:16px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.volver-aula{display:inline-flex;align-items:center;justify-content:center;padding:9px 15px;border-radius:10px;border:1px solid #94acd6;background:#f4f7ff;color:#152b51;text-decoration:none;font-weight:800;font-size:.9rem;transition:background .2s}.volver-aula:hover{background:#dce9ff}.logo{font-size:1.17rem;font-weight:900}.logo small{font-size:.76rem;display:block;font-weight:500;letter-spacing:.7px;color:#c8d7fa}.etiqueta{border:1px solid #7b91bd;border-radius:30px;padding:5px 12px;font-size:.85rem}
 nav{background:#233d69}nav .contenedor{display:flex;gap:5px;overflow-x:auto;padding-top:5px;padding-bottom:5px}nav a{text-decoration:none;color:white;padding:9px 15px;border-radius:10px;white-space:nowrap;font-weight:750;font-size:.92rem}nav a:hover,nav a.activo{background:white;color:var(--oscuro)}
 .pagina{display:none;padding:29px 0 65px}.pagina.activa{display:block}.portada{padding:40px;border-radius:23px;background:linear-gradient(125deg,#21458c,#3869ed);color:white}.portada h1{color:white;max-width:700px}.portada p{max-width:740px;color:#eff4ff;font-size:1.09rem}
 h1,h2,h3{color:var(--oscuro);line-height:1.25}h1{font-size:clamp(1.9rem,4vw,2.9rem);margin:9px 0}h2{font-size:1.45rem}.subtitulo{color:var(--azul);text-transform:uppercase;letter-spacing:1.2px;font-weight:900;font-size:.77rem}.descripcion{color:var(--gris);max-width:770px;margin:8px 0 24px}
@@ -25,7 +25,7 @@ h1,h2,h3{color:var(--oscuro);line-height:1.25}h1{font-size:clamp(1.9rem,4vw,2.9r
 </head>
 <body>
 <header>
-  <div class="contenedor cabecera"><div class="logo">✦ MISIÓN NÚMEROS<small>Matemáticas · 3.º Diversificación</small></div><span class="etiqueta">Aprende · Practica · Supérate</span></div>
+  <div class="contenedor cabecera"><div class="logo">✦ MISIÓN NÚMEROS<small>Matemáticas · 3.º Diversificación</small></div><a class="volver-aula" href="../../" aria-label="Volver al Aula de Repaso de tercero">🏠 Volver al Aula de Repaso ↗</a><span class="etiqueta">Aprende · Practica · Supérate</span></div>
   <nav aria-label="Navegación principal"><div class="contenedor">
     <a href="#inicio" data-nav="inicio">🏠 Inicio</a><a href="#enteros" data-nav="enteros">➕ Enteros</a><a href="#fracciones" data-nav="fracciones">½ Fracciones</a><a href="#potencias" data-nav="potencias">x² Potencias</a><a href="#test" data-nav="test">🏆 Test final</a>
   </div></nav>
