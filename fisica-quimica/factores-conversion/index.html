@@ -30,13 +30,13 @@
 <section id="practicar"><span class="eyebrow">04 / Entrenamiento</span><h2>Elige tu nivel</h2><p class="lead">Los ejercicios se generan con datos nuevos. Escribe la respuesta numérica, comprueba el resultado y consulta la solución con todos los factores. Puedes repetir cada nivel tantas veces como quieras.</p>
 <div class="levels" role="group" aria-label="Seleccionar nivel">
 <button class="level active" data-level="1"><span class="num">NIVEL 1</span><strong>Un solo factor</strong><small>m, g, L y s: prefijos habituales.</small></button>
-<button class="level" data-level="2"><span class="num">NIVEL 2</span><strong>De tera a pico</strong><small>Grandes y pequeños prefijos; notación científica.</small></button>
+<button class="level" data-level="2"><span class="num">NIVEL 2</span><strong>De tera a pico</strong><small>Grandes y pequeños prefijos; números con muchos ceros.</small></button>
 <button class="level" data-level="3"><span class="num">NIVEL 3</span><strong>Cuadrados y cubos</strong><small>m², cm², m³ y cm³.</small></button>
 <button class="level" data-level="4"><span class="num">NIVEL 4</span><strong>Litros y m³</strong><small>Capacidad y volumen con equivalencias.</small></button>
 <button class="level" data-level="5"><span class="num">NIVEL 5</span><strong>Velocidad</strong><small>km/h, m/s, cm/s y otras unidades derivadas.</small></button>
 <button class="level" data-level="6"><span class="num">NIVEL 6</span><strong>Reto experto</strong><small>Aceleraciones y conversiones encadenadas.</small></button>
 </div>
-<div class="exercise"><div class="ex-head"><h3 id="level-title">Nivel 1 · Un solo factor</h3><span class="tag" id="counter">Ejercicio 1</span></div><div class="ex-body"><div class="tags"><span class="tag" id="kind">Longitud</span><span class="tag" id="difficulty">Básico</span></div><p id="question" class="question" aria-live="polite"></p><label for="answer"><b>Tu resultado:</b> <span class="muted">(solo el número)</span></label><div class="answer-row"><input type="text" id="answer" inputmode="text" autocomplete="off" spellcheck="false" placeholder="Ej.: 0,025 o 2,5e-2"><strong id="answer-unit"></strong></div><p class="note">Puedes escribir coma o punto decimal y notación científica, por ejemplo <b>3,2e-5</b> (3,2 × 10⁻⁵). No escribas la unidad dentro de la casilla.</p><div class="exercise-actions"><button class="btn dark" id="check">✓ Comprobar</button><button class="btn light" id="hint">💡 Pista</button><button class="btn light" id="show">📖 Ver solución</button><button class="btn light" id="next">Otro ejercicio ↻</button></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div class="mini-grid" style="margin-top:23px"><div class="mini"><strong id="attempted">0</strong><span>Intentados en este nivel</span></div><div class="mini"><strong id="correct">0</strong><span>Acertados a la primera</span></div><div class="mini"><strong id="accuracy">—</strong><span>Porcentaje de aciertos</span></div></div><div class="progress"><span id="progress"></span></div><p class="status muted">Los contadores se reinician al recargar la página. Intenta hacer por lo menos 10 ejercicios de cada nivel.</p></div></div>
+<div class="exercise"><div class="ex-head"><h3 id="level-title">Nivel 1 · Un solo factor</h3><span class="tag" id="counter">Ejercicio 1</span></div><div class="ex-body"><div class="tags"><span class="tag" id="kind">Longitud</span><span class="tag" id="difficulty">Básico</span></div><p id="question" class="question" aria-live="polite"></p><label for="answer"><b>Tu resultado:</b> <span class="muted">(solo el número)</span></label><div class="answer-row"><input type="text" id="answer" inputmode="text" autocomplete="off" spellcheck="false" placeholder="Ej.: 0,025"><strong id="answer-unit"></strong></div><p class="note">Escribe el resultado completo, utilizando todos los ceros que sean necesarios. Puedes utilizar coma o punto decimal. No escribas la unidad dentro de la casilla.</p><div class="exercise-actions"><button class="btn dark" id="check">✓ Comprobar</button><button class="btn light" id="hint">💡 Pista</button><button class="btn light" id="show">📖 Ver solución</button><button class="btn light" id="next">Otro ejercicio ↻</button></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div><div class="mini-grid" style="margin-top:23px"><div class="mini"><strong id="attempted">0</strong><span>Intentados en este nivel</span></div><div class="mini"><strong id="correct">0</strong><span>Acertados a la primera</span></div><div class="mini"><strong id="accuracy">—</strong><span>Porcentaje de aciertos</span></div></div><div class="progress"><span id="progress"></span></div><p class="status muted">Los contadores se reinician al recargar la página. Intenta hacer por lo menos 10 ejercicios de cada nivel.</p></div></div>
 </section>
 <section style="margin-top:48px"><span class="eyebrow">05 / Antes de terminar</span><h2>Cuatro trucos que evitan errores</h2><div class="tips"><article><h3>1. Cancela las unidades</h3><p>Si no desaparece la unidad inicial, el factor está colocado al revés.</p></article><article><h3>2. Un cuadrado cambia todo</h3><p>Para cm² a m², no dividas entre 100: divide entre 10 000.</p></article><article><h3>3. El tiempo está abajo</h3><p>Al pasar km/h a m/s, el factor de las horas se coloca invertido respecto al de los kilómetros.</p></article><article><h3>4. Comprueba si tiene sentido</h3><p>Una magnitud expresada en unidades más pequeñas suele tener una cifra mayor. En velocidades y aceleraciones, analiza cada unidad por separado.</p></article></div></section>
 </main><footer class="foot">Laboratorio de unidades · Física y Química · 3.º Diversificación · <a href="../../">Volver al Aula de Repaso</a></footer>
@@ -46,7 +46,42 @@
 const P=[{s:'T',e:12},{s:'G',e:9},{s:'M',e:6},{s:'k',e:3},{s:'h',e:2},{s:'da',e:1},{s:'',e:0},{s:'d',e:-1},{s:'c',e:-2},{s:'m',e:-3},{s:'µ',e:-6},{s:'n',e:-9},{s:'p',e:-12}];
 const $=s=>document.querySelector(s), rand=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, pick=a=>a[rand(0,a.length-1)];
 let level=1, count=0, stats={}, exercise=null, checked=false, usedKey='';
-function fmt(n){if(!Number.isFinite(n))return String(n);if(n===0)return '0';const a=Math.abs(n);if(a>=1e7||a<1e-5){const s=n.toExponential(6).split('e');return Number(s[0]).toLocaleString('es-ES')+' × 10'+supernum(Number(s[1]));}return Number(n.toPrecision(10)).toLocaleString('es-ES',{maximumFractionDigits:12});}
+function fmt(n) {
+  if (!Number.isFinite(n)) return String(n);
+  if (n === 0) return '0';
+
+  // Redondea pequeños errores de cálculo de JavaScript.
+  const texto = Number(n.toPrecision(12)).toString();
+
+  // Si ya es decimal, simplemente cambia el punto por coma.
+  if (!texto.toLowerCase().includes('e')) {
+    return texto.replace('.', ',');
+  }
+
+  // Convierte internamente la notación exponencial
+  // en un número decimal con todos sus ceros.
+  const [mantisa, exp] = texto.toLowerCase().split('e');
+  const exponente = Number(exp);
+  const negativo = mantisa.startsWith('-');
+  const limpio = mantisa.replace('-', '');
+  const partes = limpio.split('.');
+  const digitos = partes.join('');
+  const posicion = partes[0].length + exponente;
+
+  let resultado;
+
+  if (posicion <= 0) {
+    resultado = '0.' + '0'.repeat(-posicion) + digitos;
+  } else if (posicion >= digitos.length) {
+    resultado = digitos + '0'.repeat(posicion - digitos.length);
+  } else {
+    resultado =
+      digitos.slice(0, posicion) + '.' +
+      digitos.slice(posicion);
+  }
+
+  return (negativo ? '-' : '') + resultado.replace('.', ',');
+}
 function supernum(n){return String(n).replace(/-/g,'⁻').replace(/\+/g,'⁺').replace(/0/g,'⁰').replace(/1/g,'¹').replace(/2/g,'²').replace(/3/g,'³').replace(/4/g,'⁴').replace(/5/g,'⁵').replace(/6/g,'⁶').replace(/7/g,'⁷').replace(/8/g,'⁸').replace(/9/g,'⁹')}
 function unit(u,p=1){return u+(p>1?'⁰'.replace('⁰',supernum(p)):'')}
 const term=(name,pow)=>pow===1?name:name+supernum(pow);
@@ -67,10 +102,27 @@ const names=['','Un solo factor','De tera a pico','Cuadrados y cubos','Litros y 
 function updateStats(){const st=stats[level]||{attempted:0,correct:0};$('#attempted').textContent=st.attempted;$('#correct').textContent=st.correct;$('#accuracy').textContent=st.attempted?Math.round(st.correct/st.attempted*100)+' %':'—';$('#progress').style.width=Math.min(st.attempted/10,1)*100+'%';}
 function clearFeedback(){$('#feedback').className='feedback';$('#feedback').innerHTML='';}
 function newExercise(){exercise=generate();checked=false;count++;$('#question').textContent=`Convierte ${dec(exercise.n)} ${exercise.from} a ${exercise.to}`;$('#answer-unit').textContent=exercise.to;$('#answer').value='';$('#kind').textContent=exercise.kind;$('#difficulty').textContent=exercise.tag;$('#counter').textContent='Ejercicio '+count;$('#answer').disabled=false;$('#check').disabled=false;clearFeedback();updateStats();}
-function parsed(s){s=s.trim().replace(/\s/g,'').replace(/−/g,'-').replace(/×10\^/g,'e').replace(/·10\^/g,'e');if(s.includes(',')&&s.includes('.'))return NaN;s=s.replace(',','.');if(!/^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(s))return NaN;return Number(s);}
+function parsed(s) {
+  s = s.trim()
+    .replace(/\s/g, '')
+    .replace(/−/g, '-');
+
+  if (s.includes(',') && s.includes('.')) {
+    return NaN;
+  }
+
+  s = s.replace(',', '.');
+
+  // Solo se permiten números decimales.
+  if (!/^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(s)) {
+    return NaN;
+  }
+
+  return Number(s);
+}
 function solution(){return `<div class="solution"><b>Factores de conversión:</b><div class="formula">${exercise.formula}</div><b>Explicación paso a paso</b><ol>${exercise.steps.map(x=>'<li>'+x+'</li>').join('')}</ol></div>`;}
 function showMessage(type,body){const el=$('#feedback');el.className='feedback show '+type;el.innerHTML=body;}
-function check(){if(checked)return;const x=parsed($('#answer').value);if(!Number.isFinite(x)){showMessage('info','Escribe un número válido (por ejemplo 0,0025 o 2,5e-3).');return;}checked=true;const r=exercise.result;const ok=Math.abs(x-r)<=Math.max(1e-30,Math.abs(r)*0.00001);const st=stats[level]||(stats[level]={attempted:0,correct:0});st.attempted++;if(ok)st.correct++;updateStats();$('#answer').disabled=true;$('#check').disabled=true;showMessage(ok?'ok':'bad',`<b>${ok?'✅ ¡Correcto!':'🔎 Vamos a revisar el resultado.'}</b><p>${ok?'Has colocado bien las unidades y calculado el factor.':'El resultado esperado es <b>'+fmt(r)+' '+exercise.to+'</b>.'}</p>${solution()}`);}
+function check(){if(checked)return;const x=parsed($('#answer').value);if(!Number.isFinite(x)){showMessage('info','Escribe el número completo, con todos sus ceros. Por ejemplo: 0,0025.');return;}checked=true;const r=exercise.result;const ok=Math.abs(x-r)<=Math.max(1e-30,Math.abs(r)*0.00001);const st=stats[level]||(stats[level]={attempted:0,correct:0});st.attempted++;if(ok)st.correct++;updateStats();$('#answer').disabled=true;$('#check').disabled=true;showMessage(ok?'ok':'bad',`<b>${ok?'✅ ¡Correcto!':'🔎 Vamos a revisar el resultado.'}</b><p>${ok?'Has colocado bien las unidades y calculado el factor.':'El resultado esperado es <b>'+fmt(r)+' '+exercise.to+'</b>.'}</p>${solution()}`);}
 function hint(){if(checked)return;showMessage('info','💡 '+exercise.hint);}
 function showSolution(){if(checked)return;checked=true;$('#answer').disabled=true;$('#check').disabled=true;showMessage('info','📖 Solución explicada. Este ejercicio no contará como intento.<br>'+solution());}
 for(const el of document.querySelectorAll('[data-level]'))el.addEventListener('click',()=>{level=Number(el.dataset.level);count=0;document.querySelectorAll('[data-level]').forEach(b=>b.classList.toggle('active',b===el));$('#level-title').textContent='Nivel '+level+' · '+names[level];newExercise();document.querySelector('.exercise').scrollIntoView({behavior:'smooth',block:'start'});});
