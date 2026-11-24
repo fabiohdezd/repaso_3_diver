@@ -1,1 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6e8fa">
+  <meta name="description" content="Repaso interactivo de radicales para 3.º de Diversificación: raíces, extracción de factores, suma y resta y potencias de exponente fraccionario.">
+  <title>Raíces · Matemáticas 3.º Diversificación</title>
+  <style>
+    :root{--ink:#181923;--muted:#5a5967;--pink:#f7dcec;--yellow:#fff7c9;--lav:#e9e0ff;--blue:#dff1fb;--orange:#ffb963;--white:#fff;--line:#282536;--good:#146a47;--bad:#9a3045;--radius:22px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f6f3f3;color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+    button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,input:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #7754e8;outline-offset:3px}
+    .wrap{width:min(1110px,calc(100% - 32px));margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0}.brand{font-weight:950;letter-spacing:-.05em;font-size:1.22rem}.brand small{font-weight:600;letter-spacing:0;color:var(--muted);font-size:.72rem;display:block}.home-link{border:2px solid #211e29;border-radius:99px;padding:9px 15px;font-weight:800;background:#fff;font-size:.84rem;white-space:nowrap}.home-link:hover{background:var(--yellow)}
+    .hero{background:var(--pink);border-radius:var(--radius);position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr .7fr;min-height:300px;padding:38px 45px;gap:18px;align-items:center}.eyebrow{font-size:.76rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.hero h1{font-size:clamp(2.7rem,7vw,5.7rem);letter-spacing:-.085em;line-height:.98;margin:15px 0 19px;max-width:680px}.hero p{font-size:1.05rem;max-width:610px;margin:0 0 23px}.hero-art{display:grid;place-items:center;position:relative;min-height:210px}.big-root{font-size:clamp(8rem,15vw,13rem);line-height:1;font-weight:850;transform:rotate(-13deg);color:#251d42;text-shadow:15px 13px 0 #e9b9d5}.star{position:absolute;font-size:3.4rem;color:#7352b8;right:0;top:6px;transform:rotate(18deg)}.dot{position:absolute;background:var(--orange);border-radius:50%;height:65px;width:65px;left:5%;bottom:5%}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#171721;color:white;border:2px solid #171721;border-radius:7px;font-weight:850;padding:11px 17px;min-height:44px}.btn:hover{background:#464052}.btn.light{background:white;color:#161621}.btn.light:hover{background:#f3eafe}.btn.small{padding:7px 11px;font-size:.84rem;min-height:36px}.btn:disabled{opacity:.45;cursor:not-allowed}
+    .nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}.nav a{font-size:.83rem;font-weight:850;border-radius:99px;padding:10px 14px;background:#fff;border:1px solid #ded9dd}.nav a:hover{background:var(--yellow)}
+    .section-title{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.055em;margin:0 0 9px}.section-desc{color:var(--muted);margin:0 0 20px;max-width:800px}.theory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:20px 0 34px}.lesson{padding:25px;border-radius:var(--radius);background:var(--yellow);min-width:0}.lesson:nth-child(2){background:var(--blue)}.lesson:nth-child(3){background:var(--lav)}.lesson:nth-child(4){background:#ffe3c5}.lesson h3{font-size:1.3rem;line-height:1.2;margin:6px 0 10px;letter-spacing:-.035em}.lesson p{margin:9px 0}.formula{background:rgba(255,255,255,.78);border-radius:12px;padding:13px 15px;font-weight:750;margin:11px 0;overflow-wrap:anywhere}.math{font-family:Georgia,"Times New Roman",serif;font-size:1.14em}.math sup{font-size:.68em}.steps{padding-left:23px}.steps li{margin:7px 0}.hint-note{font-size:.86rem;color:#494553}
+    /* MathML nativo: el navegador dibuja la barra y el signo radical. */
+    math.radical-math{display:inline-block;vertical-align:-.12em;font-size:1em;white-space:nowrap}
+    math.radical-math mroot,math.radical-math msqrt{math-style:normal}
+    .levels-head{background:#1b1a25;color:white;border-radius:var(--radius);padding:25px 28px;margin-bottom:17px}.levels-head h2{color:white;margin:4px 0 8px}.levels-head p{color:#dedce7;margin:0}.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:25px}.level-link{display:block;background:#fff;border:2px solid transparent;padding:18px;border-radius:16px;transition:.15s}.level-link:hover{transform:translateY(-2px)}.level-link.active{border-color:#312843;background:var(--lav)}.level-link .num{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:900;color:#6a577d}.level-link strong{display:block;margin:4px 0}.level-link small{display:block;color:var(--muted);line-height:1.45}
+    .decomposition{background:#f0f8ff;border:1px solid #d7e6f2;padding:14px 16px;border-radius:12px;margin:12px 0}.decomposition strong{font-size:.88rem}.decomposition .inputs{margin:8px 0 0}
+    .practice{border-radius:var(--radius);background:#fff;overflow:hidden;margin-bottom:35px;border:1px solid #e8e2e8}.practice-head{background:var(--lav);padding:24px 28px}.practice-head h3{font-size:1.6rem;margin:5px 0;letter-spacing:-.04em}.practice-head p{margin:0;color:#504765}.practice-body{padding:26px 28px}.exercise-count{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted);font-size:.87rem;font-weight:750}.problem{background:#f9f6ff;border-radius:17px;padding:22px;margin:20px 0 15px}.problem .ask{color:#5a4f6d;font-size:.84rem;font-weight:850;margin-bottom:7px}.problem .expression{font:700 clamp(1.55rem,4.5vw,2.3rem)/1.4 Georgia,"Times New Roman",serif;overflow-wrap:anywhere}.inputs{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:18px 0}.answer-field{display:grid;gap:5px;min-width:140px;flex:0 1 210px}.answer-field label{font-weight:780;font-size:.85rem}.answer-field input{width:100%;background:#fff;border:2px solid #dcd6e5;border-radius:9px;padding:10px 12px;color:var(--ink)}.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}.option{border:2px solid #ded9e4;background:#fff;border-radius:10px;padding:13px;text-align:left;min-height:60px;font:700 1.1rem/1.4 Georgia,"Times New Roman",serif}.option:hover{border-color:#8f74b9}.option.selected{background:#ede1ff;border-color:#674ca5}.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.feedback{display:none;border-radius:12px;padding:15px 17px;margin-top:16px;line-height:1.65}.feedback.show{display:block}.feedback.ok{background:#e4f6eb;color:var(--good)}.feedback.bad{background:#ffebef;color:var(--bad)}.feedback.info{background:#eef3ff;color:#304d83}.feedback .worked{margin-top:9px}.feedback .worked div{margin:4px 0}.example-label{font-size:.77rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}.tip{background:#fff4d0;padding:13px 16px;border-radius:11px;margin:13px 0;display:none}.tip.show{display:block}.progress{font-size:.88rem;color:#655d70;margin-top:17px}
+    .final{background:#ffb76c;padding:26px;border-radius:var(--radius);margin-bottom:34px}.final h2{margin:0 0 8px;font-size:2rem;letter-spacing:-.055em}.final p{max-width:740px}.final-box{background:#fff7e9;border-radius:13px;padding:20px;margin-top:17px;display:none}.final-box.show{display:block}.challenge-item{border-bottom:1px solid #e1c7a7;padding:15px 0}.challenge-item:last-child{border:0}.challenge-item h4{margin:0 0 8px}.challenge-item input{max-width:210px;padding:9px 12px;border:2px solid #cdbda9;border-radius:8px}.challenge-item .note{font-size:.8rem;color:#655843;margin:6px 0}.challenge-feedback{font-size:.9rem;margin:5px 0;color:#563327}.score{background:#201c29;color:#fff;border-radius:11px;padding:14px;margin:15px 0}
+    footer{text-align:center;color:#686372;border-top:1px solid #e4dce3;padding:26px 0 35px;font-size:.88rem}
+    @media(max-width:780px){.hero{grid-template-columns:1fr;padding:29px}.hero-art{display:none}.theory{grid-template-columns:1fr}.levels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:520px){.brand{font-size:1rem}.home-link{padding:8px 10px;font-size:.73rem}.levels{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.practice-head,.practice-body{padding:19px}.lesson{padding:21px}.nav a{font-size:.76rem;padding:8px 11px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="#arriba">✦ RAÍCES <small>Matemáticas · 3.º Diversificación</small></a>
+      <a class="home-link" href="../../">⌂ Volver al Aula de Repaso</a>
+    </header>
+
+    <section class="hero" id="arriba">
+      <div><div class="eyebrow">Aprende · Practica · Supera el reto</div>
+        <h1>Las raíces<br>tienen truco.</h1>
+        <p>Radicales explicados paso a paso, sin saltarnos operaciones. Practica tantas veces como necesites y comprueba cómo se hace cada ejercicio.</p>
+        <a class="btn" href="#teoria">Empieza por la teoría ↓</a>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span class="dot"></span><span class="big-root">√</span><span class="star">✳</span></div>
+    </section>
+
+    <nav class="nav" aria-label="Secciones de repaso">
+      <a href="#teoria">📖 Teoría</a><a href="#niveles">✏️ Ejercicios</a><a href="#reto">🏆 Reto final</a>
+    </nav>
+
+    <main>
+      <section id="teoria">
+        <h2 class="section-title">Primero, entiende las reglas.</h2>
+        <p class="section-desc">No tienes que aprenderte los resultados: sigue el procedimiento, escribe cada paso en el cuaderno y comprueba después.</p>
+        <div class="theory">
+          <article class="lesson">
+            <div class="eyebrow">01 · Qué significa</div><h3>¿Qué es una raíz?</h3>
+            <p>Una raíz hace la pregunta contraria a una potencia: <strong>¿qué número tengo que elevar para obtener este resultado?</strong></p>
+            <div class="formula math">√25 = 5 porque 5² = 25</div>
+            <p>En <strong>√25</strong>, el <strong>25</strong> es el <strong>radicando</strong> (número de dentro). El <strong>índice</strong> es 2 porque se trata de una raíz cuadrada, aunque el 2 no se escribe.</p>
+            <div class="formula math">∛8 = 2 porque 2³ = 8</div>
+            <p>En una raíz cúbica, el índice es 3. El número que aparece delante de una raíz, como en <strong>4√3</strong>, se llama <strong>coeficiente</strong>.</p>
+          </article>
+          <article class="lesson">
+            <div class="eyebrow">02 · Simplificar</div><h3>¿Cómo saco factores de una raíz?</h3>
+            <p>Primero hacemos la <strong>descomposición factorial completa en números primos</strong>. Después escribimos la descomposición como producto de potencias. Para cada potencia, <strong>dividimos el exponente entre el índice de la raíz</strong>: el cociente indica cuántas veces sale el primo y el resto cuántas veces permanece dentro.</p>
+            <div class="formula math">72 = 2 × 2 × 2 × 3 × 3 = 2<sup>3</sup> × 3<sup>2</sup></div>
+            <div class="formula math">√72 = √(2<sup>3</sup> × 3<sup>2</sup>) = 2 × 3 × √2 = 6√2</div>
+            <ol class="steps"><li>Descomponemos completamente: <strong>72 = 2 × 2 × 2 × 3 × 3 = 2³ × 3²</strong>.</li><li>Dividimos cada exponente entre el índice <strong>2</strong>: 3 ÷ 2 da <strong>cociente 1 y resto 1</strong>; 2 ÷ 2 da <strong>cociente 1 y resto 0</strong>.</li><li>El cociente indica cuántas veces sale cada primo: <strong>2 × 3</strong>. El resto indica qué permanece dentro: <strong>2</strong>.</li><li>Resultado: <strong>√72 = 6√2</strong>.</li></ol>
+            <p class="hint-note">Escribe toda la descomposición antes de simplificar. La regla funciona con cualquier índice: divide cada exponente entre el índice y utiliza siempre el cociente y el resto.</p>
+          </article>
+          <article class="lesson">
+            <div class="eyebrow">03 · Sumas y restas</div><h3>¿Cuándo puedo juntar raíces?</h3>
+            <p>Cuando tienen <strong>el mismo índice y el mismo radicando</strong>. Entonces solo sumamos o restamos los coeficientes y <strong>dejamos la raíz igual</strong>.</p>
+            <div class="formula math">3√2 + 5√2 = (3 + 5)√2 = 8√2</div>
+            <p><strong>Si al principio son diferentes, simplifica primero:</strong></p>
+            <div class="formula math">√18 + √8 = 3√2 + 2√2 = 5√2</div>
+            <ol class="steps"><li>Descomponemos: <strong>18 = 2 × 3²</strong> y <strong>8 = 2³</strong>.</li><li>Dividimos exponentes entre 2: para 3², cociente 1 y resto 0; para 2³, cociente 1 y resto 1. Así obtenemos <strong>√18 = 3√2</strong> y <strong>√8 = 2√2</strong>.</li><li>Ya son semejantes: <strong>3√2 + 2√2 = 5√2</strong>.</li></ol>
+            <p class="hint-note">Recuerda: √2 + √3 <strong>no</strong> es √5.</p>
+          </article>
+          <article class="lesson">
+            <div class="eyebrow">04 · Productos y cocientes</div><h3>De raíces a potencias fraccionarias</h3>
+            <p><strong>Primer paso:</strong> cambia cada raíz por una potencia. La raíz cuadrada se escribe con exponente <strong>1/2</strong>; la cúbica, con <strong>1/3</strong>.</p>
+            <div class="formula math">√2 = 2<sup>1/2</sup> &nbsp; y &nbsp; ∛2 = 2<sup>1/3</sup></div>
+            <p><strong>Segundo paso:</strong> si las potencias tienen la misma base, al <strong>multiplicar sumamos</strong> los exponentes; al <strong>dividir los restamos</strong>.</p>
+            <div class="formula math">√2 × ∛2 = 2<sup>1/2</sup> × 2<sup>1/3</sup> = 2<sup>5/6</sup></div>
+            <ol class="steps"><li>Escribe 1/2 + 1/3.</li><li>Busca denominador común: 3/6 + 2/6 = 5/6.</li><li>Conserva la base 2: <strong>2<sup>5/6</sup></strong>.</li></ol>
+            <div class="formula math">√3 ÷ ∛3 = 3<sup>1/2</sup> ÷ 3<sup>1/3</sup> = 3<sup>1/6</sup></div>
+            <p class="hint-note">Si las raíces son exactas, también puedes calcular cada una: √36 × ∛8 = 6 × 2 = 12. En los ejercicios practicarás ambos casos.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="niveles">
+        <div class="levels-head"><div class="eyebrow">Entrenamiento autocorregible</div><h2 class="section-title">Seis niveles. Tú marcas el ritmo.</h2><p>En cada nivel puedes generar ejercicios nuevos, pedir una pista y consultar el procedimiento después de responder.</p></div>
+        <div class="levels" id="level-links" aria-label="Seleccionar nivel">
+          <button class="level-link active" data-level="0"><span class="num">Nivel 1</span><strong>Conoce las raíces</strong><small>Identificar y calcular raíces exactas.</small></button>
+          <button class="level-link" data-level="1"><span class="num">Nivel 2</span><strong>Extrae factores</strong><small>Descompón en primos, divide exponentes entre el índice y simplifica.</small></button>
+          <button class="level-link" data-level="2"><span class="num">Nivel 3</span><strong>Raíces semejantes</strong><small>Suma y resta sin simplificar antes.</small></button>
+          <button class="level-link" data-level="3"><span class="num">Nivel 4</span><strong>Simplifica y opera</strong><small>Extrae factores y después suma o resta.</small></button>
+          <button class="level-link" data-level="4"><span class="num">Nivel 5</span><strong>Multiplica y divide</strong><small>Pasa a potencias fraccionarias y calcula.</small></button>
+          <button class="level-link" data-level="5"><span class="num">Nivel 6</span><strong>Exponente fraccionario</strong><small>Misma base: suma o resta fracciones.</small></button>
+        </div>
+        <div class="practice" aria-live="polite">
+          <div class="practice-head"><div class="eyebrow" id="level-kicker">Nivel 1 de 6</div><h3 id="level-title">Conoce las raíces</h3><p id="level-detail">Identifica los elementos y calcula raíces exactas.</p></div>
+          <div class="practice-body">
+            <div class="exercise-count"><span id="ex-no">Ejercicio nuevo</span><span id="level-stats">0 aciertos de 0 intentos</span></div>
+            <div class="problem"><div class="ask" id="prompt">Resuelve:</div><div class="expression" id="expression">√25</div></div>
+            <div id="answer-area"></div>
+            <div class="buttons"><button class="btn" id="check-btn">Comprobar</button><button class="btn light" id="hint-btn">💡 Pista</button><button class="btn light" id="next-btn">Otro ejercicio ↻</button></div>
+            <div class="tip" id="tip"></div><div class="feedback" id="feedback" role="status"></div>
+            <p class="progress">✏️ Te recomendamos resolver cada ejercicio en el cuaderno antes de comprobarlo. La web no sustituye los pasos escritos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final" id="reto"><div class="eyebrow">Para terminar</div><h2>🏆 Reto final de radicales</h2><p>Diez ejercicios variados de todos los niveles. Puedes corregirlos y volver a generar otra tanda. Escribe los resultados simplificados, sin aproximaciones decimales de raíces.</p>
+        <button class="btn" id="start-challenge">Generar reto de 10 ejercicios →</button>
+        <div class="final-box" id="challenge-box"><div id="challenge-questions"></div><div class="buttons"><button class="btn" id="mark-challenge">Corregir el reto</button><button class="btn light" id="renew-challenge">Nuevo reto ↻</button></div><div id="challenge-result" role="status"></div></div>
+      </section>
+    </main>
+    <footer>✦ Raíces sin miedo · Matemáticas · 3.º de Diversificación · <a href="../../"><u>Volver al Aula de Repaso</u></a></footer>
+  </div>
+<script>
+/* MathML nativo: radicales sin barras dibujadas a mano ni dependencias externas. */
+(function(){
+  const NS='http://www.w3.org/1998/Math/MathML';
+  const patron=/([√∛])((?:\([0-9a-zA-Z²³×· +\-]+\))|(?:[0-9]+)|(?:[a-zA-Z]))/g;
+  function convierte(texto){
+    if(!texto.nodeValue || !/[√∛]/.test(texto.nodeValue))return;
+    if(texto.parentElement?.closest('math,script,style,textarea,input'))return;
+    const valor=texto.nodeValue,frag=document.createDocumentFragment();
+    let fin=0,m;
+    patron.lastIndex=0;
+    while((m=patron.exec(valor))!==null){
+      if(m.index>fin)frag.append(document.createTextNode(valor.slice(fin,m.index)));
+      const math=document.createElementNS(NS,'math');math.classList.add('radical-math');
+      const operador=document.createElementNS(NS,m[1]==='∛'?'mroot':'msqrt');
+      const cuerpo=document.createElementNS(NS,'mrow');
+      const numero=document.createElementNS(NS,'mn');numero.textContent=m[2];
+      cuerpo.append(numero);operador.append(cuerpo);
+      if(m[1]==='∛'){const ind=document.createElementNS(NS,'mn');ind.textContent='3';operador.append(ind);}
+      math.append(operador);frag.append(math);fin=patron.lastIndex;
+    }
+    if(!fin)return;
+    if(fin<valor.length)frag.append(document.createTextNode(valor.slice(fin)));
+    texto.replaceWith(frag);
+  }
+  function aplicar(nodo){
+    if(nodo.nodeType===Node.TEXT_NODE){convierte(nodo);return;}
+    if(nodo.nodeType!==Node.ELEMENT_NODE || nodo.closest('math,script,style,textarea'))return;
+    const walker=document.createTreeWalker(nodo,NodeFilter.SHOW_TEXT);
+    const textos=[];while(walker.nextNode())textos.push(walker.currentNode);
+    textos.forEach(convierte);
+  }
+  aplicar(document.body);
+  new MutationObserver(cambios=>cambios.forEach(c=>c.addedNodes.forEach(aplicar)))
+    .observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const rand=(min,max)=>Math.floor(Math.random()*(max-min+1))+min;
+const pick=arr=>arr[rand(0,arr.length-1)];
+const shuffle=arr=>{let a=[...arr];for(let i=a.length-1;i>0;i--){const j=rand(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b];}return a||1;};
+const reduced=(n,d)=>{if(d<0){n=-n;d=-d;}const g=gcd(n,d);return {n:n/g,d:d/g};};
+const fraction=f=>f.d===1?String(f.n):`${f.n}/${f.d}`;
+const exponent=f=>`<sup>${fraction(f)}</sup>`;
+const root=(b,i=2)=>i===2?`√${b}`:i===3?`∛${b}`:`<sup>${i}</sup>√${b}`;
+const radical=(coef,b)=>coef===0?'0':(b===1?String(coef):`${coef===1?'':coef===-1?'−':coef}√${b}`);
+const factors=[2,3,5,6,7,10,11,13,14,15];
+const squareBase=[2,3,4,5,6,7,8,9];
+const powerBase=[2,3,4,5];
+function inputQuestion(q,answer,hint,worked,format='number') {return {kind:'input',q,answer,hint,worked,format};}
+function pairQuestion(q,coef,b,hint,worked,decomps=[]){return {kind:'pair',q,answer:{coef,b},hint,worked,decomps};}
+function choiceQuestion(q,options,correct,hint,worked){return {kind:'choice',q,options:shuffle(options),correct,hint,worked};}
+function extract(){const k=rand(2,8),b=pick(factors);return {k,b,n:k*k*b};}
+function primos(n){
+  const lista=[];let d=2;
+  while(n>1){if(n%d===0){lista.push(d);n/=d;}else d++;}
+  return lista;
+}
+function descomposicion(n){return primos(n).join(' × ');}
+function exponentesPrimos(n){
+  const conteos={}; for(const p of primos(n))conteos[p]=(conteos[p]||0)+1;
+  return Object.entries(conteos).map(([p,e])=>({p:Number(p),e}));
+}
+function potenciasPrimas(n){return exponentesPrimos(n).map(({p,e})=>e===1?String(p):`${p}<sup>${e}</sup>`).join(' × ');}
+function pasosDivision(n,indice=2){
+  return exponentesPrimos(n).map(({p,e})=>`${p}<sup>${e}</sup>: ${e} ÷ ${indice} → cociente ${Math.floor(e/indice)}, resto ${e%indice}`).join('; ');
+}
+function detalleFactores(n){
+  const p=primos(n),fuera=[],dentro=[];
+  for(let i=0;i<p.length;){const x=p[i];let cuenta=0;while(i<p.length&&p[i]===x){cuenta++;i++;}
+    for(let j=0;j<Math.floor(cuenta/2);j++)fuera.push(x);
+    if(cuenta%2)dentro.push(x);
+  }
+  return {fuera:fuera.length?fuera.join(' × '):'1',dentro:dentro.length?dentro.join(' × '):'1'};
+}
+function interpretarPrimos(texto){
+  const t=texto.trim().replace(/\s/g,'').replace(/[·xX]/g,'×');
+  if(!/^\d+(?:[×*]\d+)*$/.test(t))return null;
+  const nums=t.split(/[×*]/).map(Number);
+  if(!nums.every(x=>Number.isSafeInteger(x)&&x>=2&&primos(x).length===1))return null;
+  return nums.sort((a,b)=>a-b);
+}
+function makeQ(level){
+  if(level===0){
+    if(Math.random()<.45){const i=pick([2,3,4]),x=rand(2,6),n=x**i;return inputQuestion(`Calcula: ${root(n,i)}`,x,`Busca el número que multiplicado por sí mismo ${i} veces da ${n}.`,[`Índice: ${i}. Radicando: ${n}.`,`Como ${x}<sup>${i}</sup> = ${n}, entonces ${root(n,i)} = <strong>${x}</strong>.`]);}
+    const i=pick([2,3,4]),n=rand(8,81),type=pick(['Índice','Radicando']);let opts=type==='Índice'?[String(i),String(n),'1','5']:[String(n),String(i),'2','4'];opts=[...new Set(opts)];while(opts.length<4)opts.push(String(rand(90,150)));return choiceQuestion(`En el radical ${root(n,i)}, ¿cuál es el <strong>${type.toLowerCase()}</strong>?`,opts,type==='Índice'?String(i):String(n),'El índice indica el tipo de raíz. El radicando es el número que está dentro. ',[`En ${root(n,i)}, el índice es <strong>${i}</strong> y el radicando es <strong>${n}</strong>.`]);
+  }
+  if(level===1){const e=extract(),d=detalleFactores(e.n);return pairQuestion(`Extrae todos los factores posibles: √${e.n}`,e.k,e.b,`Descompón ${e.n} en primos, escribe sus potencias y divide cada exponente entre el índice 2. El cociente sale; el resto se queda dentro.`,[`Descomposición completa: ${e.n} = <strong>${descomposicion(e.n)}</strong>.`,`En potencias: ${potenciasPrimas(e.n)}. Divisiones: ${pasosDivision(e.n)}.` ,`Salen ${d.fuera}; quedan dentro ${d.dentro}.`,`Resultado: √${e.n} = <strong>${e.k}√${e.b}</strong>.`],[{n:e.n}]);}
+  if(level===2){const b=pick(factors);let a=rand(2,9),c=rand(1,7),minus=Math.random()<.5;if(minus&&a===c)c++;const coef=minus?a-c:a+c;const sign=minus?'−':'+';return pairQuestion(`Calcula: ${radical(a,b)} ${sign} ${radical(c,b)}`,coef,b,'Los radicales son semejantes: conserva la raíz y opera solo los coeficientes.',[`Ambos tienen √${b}.`,`(${a} ${sign} ${c})√${b} = <strong>${radical(coef,b)}</strong>.`]);}
+  if(level===3){const b=pick(factors),k=rand(2,6),j=rand(2,6),s=Math.random()<.6?1:-1,c=rand(1,3);const n=k*k*b,m=j*j*b,coef=k+s*c*j;const op=s===1?'+':'−';const q=`√${n} ${op} ${c===1?'':c}√${m}`;const pregunta=pairQuestion(`Simplifica y calcula: ${q}`,coef===0?0:coef,coef===0?1:b,`Descompón ${n} y ${m} en primos. Divide cada exponente entre 2; usa los cocientes para lo que sale y los restos para lo que queda dentro. Después suma o resta los radicales semejantes.`,[`${n} = <strong>${descomposicion(n)}</strong> = ${potenciasPrimas(n)}; ${m} = <strong>${descomposicion(m)}</strong> = ${potenciasPrimas(m)}.`,`Para ${n}: ${pasosDivision(n)}. Para ${m}: ${pasosDivision(m)}.`,`√${n} = ${k}√${b} y √${m} = ${j}√${b}.`,`Así: ${k}√${b} ${op} ${c*j}√${b} = <strong>${radical(coef,b)}</strong>.`],[{n},{n:m}]);pregunta.skipDivision=true;return pregunta;}
+  if(level===4){const i=pick([2,3,4]),j=pick([2,3,4]),a=rand(2,7),b=rand(2,6),op=Math.random()<.55?'×':'÷';const x=a**i,y=b**j;const f=reduced(op==='×'?a*b:a,op==='×'?1:b);return inputQuestion(`${root(x,i)} ${op} ${root(y,j)} =`,fraction(f),`Convierte: ${root(x,i)} = ${x}<sup>1/${i}</sup> = ${a}; ${root(y,j)} = ${y}<sup>1/${j}</sup> = ${b}.`,[`Escribimos potencias: ${x}<sup>1/${i}</sup> ${op} ${y}<sup>1/${j}</sup>.`,`Calculamos cada una: ${a} ${op} ${b} = <strong>${fraction(f)}</strong>.`],'fraction');}
+  const base=pick(powerBase),i=pick([2,3,4]),j=pick([2,3,4]),op=Math.random()<.6?'×':'÷';const f=reduced(op==='×'?i+j:i-j,i*j);let alternatives=[fraction(f),fraction(reduced(op==='×'?2:i+j,i*j)),fraction(reduced(op==='×'?1:-1,i*j)),fraction(reduced(op==='×'?i*j:i-j,i+j)),fraction(reduced(i+j,Math.abs(i-j)||1))];alternatives=[...new Set(alternatives)];while(alternatives.length<4)alternatives.push(`${rand(2,9)}/${rand(2,9)}`);const choices=alternatives.slice(0,4).map(x=>`${base}^(${x})`);return choiceQuestion(`Transforma a potencias y simplifica: ${root(base,i)} ${op} ${root(base,j)}`,choices,`${base}^(${fraction(f)})`,`Las dos raíces tienen base ${base}. Pasa a ${base}^(1/${i}) y ${base}^(1/${j}), y ${op==='×'?'suma':'resta'} los exponentes.`,[`Transformamos: ${base}<sup>1/${i}</sup> ${op} ${base}<sup>1/${j}</sup>.`,`Como la base es igual, ${op==='×'?'sumamos':'restamos'}: 1/${i} ${op==='×'?'+':'−'} 1/${j} = ${fraction(f)}.`,`Resultado: <strong>${base}${exponent(f)}</strong>.`]);
+}
+const levels=[
+ ['Conoce las raíces','Identifica las partes de un radical y calcula raíces exactas.'],
+ ['Extrae factores','Descompón en primos, divide exponentes entre el índice y extrae factores.'],
+ ['Raíces semejantes','Suma y resta los coeficientes de radicales semejantes.'],
+ ['Simplifica y opera','Primero extrae factores; después suma o resta.'],
+ ['Multiplica y divide','Convierte cada raíz a potencia de exponente fraccionario y calcula.'],
+ ['Exponente fraccionario','Trabaja con raíces de la misma base y opera sus exponentes.']
+];
+let level=0,current=null,attempts=levels.map(()=>0),wins=levels.map(()=>0),sequence=levels.map(()=>0),selected=null,challenge=[];
+function parseNumber(t){const s=t.trim().replace(/\s/g,'').replace(/−/g,'-').replace(',','.');if(/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s))return Number(s);if(/^[-+]?\d+\/[-+]?\d+$/.test(s)){const [a,b]=s.split('/').map(Number);return b? a/b:NaN;}return NaN;}
+function getAnswer(q,scope){
+  if(q.kind==='choice')return selected;
+  const a=scope.querySelector('[name="ans-a"]');if(!a)return null;
+  if(q.kind==='pair'){
+    const b=scope.querySelector('[name="ans-b"]');
+    const decomps=(q.decomps||[]).map((_,i)=>{
+      const campo=scope.querySelector(`[name="des-${i}-primos"]`);
+      const texto=campo?.value||'';
+      const divisiones=exponentesPrimos(q.decomps[i].n).map(({p})=>({
+        p, cociente:parseNumber(scope.querySelector(`[name="des-${i}-q-${p}"]`)?.value||''),
+        resto:parseNumber(scope.querySelector(`[name="des-${i}-r-${p}"]`)?.value||'')
+      }));
+      return {factores:interpretarPrimos(texto),entered:texto.trim()!==''&&(q.skipDivision||divisiones.every(v=>Number.isFinite(v.cociente)&&Number.isFinite(v.resto))),divisiones};
+    });
+    return {coef:parseNumber(a.value),b:parseNumber(b.value),entered:a.value.trim()!==''&&b.value.trim()!==''&&decomps.every(x=>x.entered),decomps};
+  }
+  return a.value.trim()?parseNumber(a.value):NaN;
+}
+function isCorrect(q,ans){
+  if(q.kind==='choice')return ans===q.correct;
+  if(q.kind==='pair'){
+    const validos=(q.decomps||[]).every((d,i)=>JSON.stringify(ans?.decomps?.[i]?.factores)===JSON.stringify(primos(d.n)) &&
+      (q.skipDivision||exponentesPrimos(d.n).every(({p,e},j)=>ans?.decomps?.[i]?.divisiones?.[j]?.cociente===Math.floor(e/2)&&ans?.decomps?.[i]?.divisiones?.[j]?.resto===e%2)));
+    return ans?.entered&&validos&&Number.isFinite(ans.coef)&&Number.isFinite(ans.b)&&ans.coef===q.answer.coef&&ans.b===q.answer.b;
+  }
+  return typeof ans==='number'&&Number.isFinite(ans)&&Math.abs(ans-parseNumber(String(q.answer)))<1e-8;
+}
+function answerHtml(q,challengeMode=false){
+  if(q.kind==='choice')return `<div class="answers">${q.options.map(o=>`<button type="button" class="option" data-value="${o.replaceAll('"','&quot;')}">${o.replace(/\^\(([^)]+)\)/g,'<sup>$1</sup>')}</button>`).join('')}</div>`;
+  if(q.kind==='pair'){
+    const intermedio=(q.decomps||[]).map((d,i)=>{
+      const divisiones=q.skipDivision?'':exponentesPrimos(d.n).map(({p,e})=>`<div class="decomposition"><strong>Potencia ${p}<sup>${e}</sup>: divide ${e} entre 2</strong><div class="inputs"><div class="answer-field"><label>Cociente (veces que sale ${p})</label><input type="text" name="des-${i}-q-${p}" inputmode="numeric" placeholder="Cociente"></div><div class="answer-field"><label>Resto (veces que queda ${p})</label><input type="text" name="des-${i}-r-${p}" inputmode="numeric" placeholder="Resto"></div></div></div>`).join('');
+      return `<div class="decomposition"><strong>Paso ${i+1}: descomposición factorial completa de ${d.n}</strong><div class="inputs"><div class="answer-field" style="flex:1 1 280px"><label>${d.n} = (escribe todos los factores primos)</label><input name="des-${i}-primos" type="text" autocomplete="off" placeholder="Ej.: 2 × 2 × 2 × 3 × 3"></div></div><p class="hint-note">Puedes escribir los primos con ×, x o *. El orden no importa. ${q.skipDivision?"Después, simplifica las raíces y realiza la operación.":"Después, cuenta los exponentes y divide cada uno entre el índice 2."}</p>${divisiones}</div>`;
+    }).join('');
+    return `${intermedio}<p><strong>${q.decomps?.length?'Resultado final:':'Escribe el resultado simplificado:'}</strong></p><div class="inputs"><div class="answer-field"><label>Número que sale fuera</label><input name="ans-a" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej.: 6"></div><div class="answer-field"><label>Número que queda dentro de la raíz</label><input name="ans-b" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej.: 2"></div></div><p class="hint-note">Si el resultado es 0, escribe 0 como coeficiente y 1 como radicando.</p>`;
+  }
+  return `<div class="inputs"><div class="answer-field"><label>Tu resultado${q.format==='fraction'?' (entero o fracción)':''}</label><input name="ans-a" type="text" inputmode="decimal" autocomplete="off" placeholder="${q.format==='fraction'?'Ej.: 3/2':'Ej.: 5'}"></div></div>`;
+}
+function renderQuestion(){current=makeQ(level);selected=null;sequence[level]++;$('ex-no').textContent=`Ejercicio ${sequence[level]} de este nivel`;$('prompt').textContent=level===0?'Observa y responde:':'Resuelve y simplifica:';$('expression').innerHTML=current.q;$('answer-area').innerHTML=answerHtml(current);$('tip').className='tip';$('tip').innerHTML='';$('feedback').className='feedback';$('feedback').innerHTML='';$('check-btn').disabled=false;setupChoices($('answer-area'),v=>selected=v);updateStats();}
+function setupChoices(container,cb){container.querySelectorAll('.option').forEach(btn=>btn.addEventListener('click',()=>{container.querySelectorAll('.option').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');cb(btn.dataset.value);}));}
+function updateStats(){$('level-stats').textContent=`${wins[level]} aciertos de ${attempts[level]} intentos`;}
+function selectLevel(n){level=n;document.querySelectorAll('[data-level]').forEach(b=>{b.classList.toggle('active',Number(b.dataset.level)===n);b.setAttribute('aria-pressed',String(Number(b.dataset.level)===n));});$('level-kicker').textContent=`Nivel ${n+1} de 6`;$('level-title').textContent=levels[n][0];$('level-detail').textContent=levels[n][1];renderQuestion();document.querySelector('.practice').scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>selectLevel(Number(b.dataset.level))));
+$('next-btn').addEventListener('click',renderQuestion);
+$('hint-btn').addEventListener('click',()=>{$('tip').innerHTML=`<strong>💡 Pista:</strong> ${current.hint}`;$('tip').className='tip show';});
+$('check-btn').addEventListener('click',()=>{const ans=getAnswer(current,$('answer-area'));if((current.kind==='choice'&&!ans)||(current.kind==='pair'&&!ans?.entered)||(current.kind==='input'&&!Number.isFinite(ans))||(current.kind==='pair'&&(!Number.isFinite(ans.coef)||!Number.isFinite(ans.b)||ans.decomps.some(d=>!d.entered||!d.factores)))){$('feedback').innerHTML=current.skipDivision?'Completa la descomposición factorial de ambos números y el resultado final.':'Completa la descomposición en primos y, para cada potencia, el cociente y el resto de dividir el exponente entre el índice.';$('feedback').className='feedback show info';return;}const ok=isCorrect(current,ans);attempts[level]++;if(ok)wins[level]++;updateStats();$('feedback').innerHTML=`<strong>${ok?'✅ ¡Muy bien!':'🔍 Repasamos el procedimiento:'}</strong><div class="worked">${current.worked.map(s=>`<div>${s}</div>`).join('')}</div>`;$('feedback').className=`feedback show ${ok?'ok':'bad'}`;$('check-btn').disabled=true;$('answer-area').querySelectorAll('input,button').forEach(e=>e.disabled=true);});
+function createChallenge(){challenge=[0,1,1,2,3,3,4,4,5,5].map(i=>({lvl:i,q:makeQ(i),chosen:null}));$('challenge-box').className='final-box show';$('challenge-result').innerHTML='';$('mark-challenge').disabled=false;$('challenge-questions').innerHTML=challenge.map((entry,i)=>`<div class="challenge-item" data-challenge="${i}"><h4>${i+1}. ${entry.q.q} <span class="hint-note">(Nivel ${entry.lvl+1})</span></h4>${answerHtml(entry.q,true)}<div class="challenge-feedback" aria-live="polite"></div></div>`).join('');challenge.forEach((entry,i)=>setupChoices(document.querySelector(`[data-challenge="${i}"]`),v=>entry.chosen=v));}
+$('start-challenge').addEventListener('click',()=>{createChallenge();$('challenge-box').scrollIntoView({behavior:'smooth'});});$('renew-challenge').addEventListener('click',createChallenge);
+$('mark-challenge').addEventListener('click',()=>{let score=0;challenge.forEach((entry,i)=>{const area=document.querySelector(`[data-challenge="${i}"]`),ans=entry.q.kind==='choice'?entry.chosen:getAnswer(entry.q,area),ok=isCorrect(entry.q,ans);if(ok)score++;area.querySelector('.challenge-feedback').innerHTML=`${ok?'✅ Correcto.':'❌ Incorrecto.'} ${entry.q.worked.join(' ')}`;area.querySelectorAll('input,button').forEach(el=>el.disabled=true);});$('challenge-result').innerHTML=`<div class="score"><strong>Resultado: ${score} / 10</strong><div>${score>=9?'¡Excelente trabajo!':score>=7?'¡Buen avance! Repasa los errores.':'Vuelve a los niveles que te hayan costado y repite el reto.'}</div></div>`;$('mark-challenge').disabled=true;});
+renderQuestion();
+</script>
+</body>
+</html>
 
